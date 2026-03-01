@@ -1,662 +1,93 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Automatisation Business avec l'IA — Notes de cours complètes" />
-  <title>Automatisation Business avec l'IA</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>Ma Plateforme SaaS</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
 
-  <header>
-    <p class="cat">Business &bull; Automatisation &bull; IA</p>
-    <h1>Automatisation Business avec l'IA</h1>
-    <p class="sub">Notes de Cours Compl&egrave;tes</p>
-  </header>
+<div class="layout">
+
+    <aside class="sidebar">
+        <h2>🚀 MonSaaS</h2>
+        <nav>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#services">Services</a>
+            <a href="#pricing">Tarifs</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+
+        <section class="hero">
+            <h1>Crée. Automatise. Scale.</h1>
+            <p>Une plateforme moderne pour organiser, vendre et automatiser ton business.</p>
+            <button>Commencer</button>
+        </section>
+
+        <section id="dashboard" class="section">
+            <h2>📊 Dashboard</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Revenus</h3>
+                    <p>12 540€</p>
+                </div>
+                <div class="card">
+                    <h3>Clients</h3>
+                    <p>248</p>
+                </div>
+                <div class="card">
+                    <h3>Conversion</h3>
+                    <p>6.2%</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section">
+            <h2>💼 Services</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Design</h3>
+                    <p>Création visuelle premium</p>
+                </div>
+                <div class="card">
+                    <h3>Automatisation</h3>
+                    <p>Workflows intelligents</p>
+                </div>
+                <div class="card">
+                    <h3>Marketing</h3>
+                    <p>Stratégies à forte conversion</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="section">
+            <h2>💰 Tarifs</h2>
+            <div class="cards">
+                <div class="card pricing">
+                    <h3>Starter</h3>
+                    <p class="price">29€ / mois</p>
+                    <button>Souscrire</button>
+                </div>
+                <div class="card pricing highlight">
+                    <h3>Pro</h3>
+                    <p class="price">79€ / mois</p>
+                    <button>Souscrire</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>📩 Contact</h2>
+            <p>contact@monsaas.com</p>
+        </section>
+
+    </main>
 
-  <nav>
-    <ul>
-      <li><a href="#introduction">Introduction</a></li>
-      <li><a href="#concepts">Concepts Techniques</a></li>
-      <li><a href="#installation">Installation</a></li>
-      <li><a href="#business-plan">Business Plan</a></li>
-      <li><a href="#cas-usage">Cas d'Usage</a></li>
-      <li><a href="#points-cles">Points Cl&eacute;s</a></li>
-      <li><a href="#ressources">Ressources</a></li>
-      <li><a href="#vocabulaire">Vocabulaire</a></li>
-      <li><a href="#conclusion">Conclusion</a></li>
-    </ul>
-  </nav>
-
-  <main>
-
-    <!-- ═══════════════════════════════════
-         INTRODUCTION
-    ═══════════════════════════════════ -->
-    <section id="introduction">
-      <h2>Introduction</h2>
-
-      <dl>
-        <dt>Contexte</dt>
-        <dd>Live de formation sur l'automatisation business utilisant l'intelligence artificielle</dd>
-
-        <dt>Objectif principal</dt>
-        <dd>Comprendre l'automatisation et g&eacute;n&eacute;rer des revenus (&laquo;&nbsp;faire de l'oseille&nbsp;&raquo;)</dd>
-
-        <dt>Concept cl&eacute; : SMMIA</dt>
-        <dd>Social Media Marketing Intelligence Artificielle = Combinaison entre la vente de services (SMMA) et l'intelligence artificielle pour automatiser la prestation de services</dd>
-      </dl>
-
-      <blockquote>
-        &laquo;&nbsp;L'objectif c'est que vos agents bossent pour vous. Vous &ecirc;tes &agrave; la chicha, vous savez que derri&egrave;re &ccedil;a fait rentrer de l'oseille.&nbsp;&raquo;
-        <cite>Philosophie du cours</cite>
-      </blockquote>
-    </section>
-
-    <!-- ═══════════════════════════════════
-         CONCEPTS TECHNIQUES
-    ═══════════════════════════════════ -->
-    <section id="concepts">
-      <h2>Concepts Techniques Fondamentaux</h2>
-
-      <!-- 1. Navigateur vs Terminal -->
-      <article>
-        <h3>1. IA sur Navigateur vs Terminal</h3>
-
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Crit&egrave;re</th>
-                <th>IA sur Navigateur</th>
-                <th>IA sur Terminal</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Performance</td>
-                <td>Brid&eacute;e, partage ressources processeur</td>
-                <td>Boost&eacute;e, connexion directe</td>
-              </tr>
-              <tr>
-                <td>Limitations</td>
-                <td>Contexte fen&ecirc;tre limit&eacute;, autres onglets ouverts</td>
-                <td>Aucune limitation</td>
-              </tr>
-              <tr>
-                <td>Analogie</td>
-                <td>Moteur thermique (lent)</td>
-                <td>Moteur &eacute;lectrique (instantan&eacute;)</td>
-              </tr>
-              <tr>
-                <td>Connexion</td>
-                <td>Navigateur &rarr; IA</td>
-                <td>Terminal &rarr; Processeur &rarr; IA</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <blockquote>
-          &laquo;&nbsp;L&agrave; quand vous passez sur le terminal, l'IA &ccedil;a fait processeur IA. C'est comme quand on parle voiture [...] c'est terminal processeur.&nbsp;&raquo;
-          <cite>Principe</cite>
-        </blockquote>
-      </article>
-
-      <!-- 2. Claude CLI -->
-      <article>
-        <h3>2. Claude CLI (Command Line Interface)</h3>
-
-        <dl>
-          <dt>D&eacute;finition</dt>
-          <dd>Version de l'IA Claude ex&eacute;cut&eacute;e directement dans le terminal</dd>
-
-          <dt>Avantage</dt>
-          <dd>Plus puissant que l'utilisation via navigateur</dd>
-
-          <dt>Utilisation</dt>
-          <dd>Permet de cr&eacute;er des sections Shopify, des automatisations, etc.</dd>
-        </dl>
-
-        <p class="label">Installation Windows :</p>
-        <ol>
-          <li>Installer Node.js</li>
-          <li>Installer Git</li>
-          <li>Installer Claude CLI</li>
-          <li>Documentation disponible dans l'espace replay</li>
-        </ol>
-      </article>
-
-      <!-- 3. Open CL -->
-      <article>
-        <h3>3. Open CL</h3>
-
-        <p class="label">Caract&eacute;ristiques :</p>
-        <ul>
-          <li>Assistant IA accessible depuis mobile (WhatsApp, Discord, Telegram)</li>
-          <li>Acc&egrave;s en temps r&eacute;el &agrave; tout l'ordinateur</li>
-          <li>Acc&egrave;s aux skills et agents configur&eacute;s</li>
-        </ul>
-
-        <blockquote>
-          &laquo;&nbsp;Je suis en closing, dans un rendez-vous avec un client : &lsquo;S'il te pla&icirc;t Tasha, fais-moi une facture de 1200&nbsp;&euro; pour un site vitrine plus un syst&egrave;me de r&eacute;servation.&rsquo; Il le fait, j'ai directement tout sur mon t&eacute;l&eacute;phone.&nbsp;&raquo;
-          <cite>Exemple d'usage concret</cite>
-        </blockquote>
-
-        <p><strong>Pr&eacute;requis :</strong> L'ordinateur doit rester allum&eacute; (solution : VPS)</p>
-      </article>
-
-      <!-- 4. VPS -->
-      <article>
-        <h3>4. VPS (Virtual Private Server)</h3>
-
-        <dl>
-          <dt>D&eacute;finition</dt>
-          <dd>Ordinateur virtuel lou&eacute; &agrave; distance</dd>
-
-          <dt>Co&ucirc;t</dt>
-          <dd>10&ndash;15&nbsp;&euro; par mois</dd>
-
-          <dt>Avantage</dt>
-          <dd>Reste allum&eacute; 24h/24, permet de faire tourner les automatisations</dd>
-
-          <dt>Alternative</dt>
-          <dd>&Agrave; l'ordinateur physique qui doit rester allum&eacute;</dd>
-        </dl>
-      </article>
-
-      <!-- 5. Skills -->
-      <article>
-        <h3>5. Skills (Comp&eacute;tences IA)</h3>
-
-        <dl>
-          <dt>D&eacute;finition</dt>
-          <dd>Instructions sp&eacute;cialis&eacute;es m&eacute;moris&eacute;es par l'IA pour effectuer des t&acirc;ches pr&eacute;cises</dd>
-        </dl>
-
-        <p class="label">Types de skills mentionn&eacute;s :</p>
-        <ul>
-          <li><strong>Mobile First :</strong> Sites web responsive mobile</li>
-          <li><strong>Front-end Design :</strong> Cr&eacute;ation de beaux designs automatiquement</li>
-          <li><strong>UI/UX :</strong> Navigation intuitive optimis&eacute;e</li>
-          <li><strong>Facture :</strong> G&eacute;n&eacute;ration automatique de factures</li>
-        </ul>
-
-        <p class="label">M&eacute;thode de cr&eacute;ation :</p>
-        <ol>
-          <li>R&eacute;aliser une t&acirc;che compl&egrave;te avec l'IA (ex&nbsp;: cr&eacute;er une facture de A &agrave; Z)</li>
-          <li>Donner l'instruction&nbsp;: &laquo;&nbsp;Maintenant je veux que &agrave; chaque fois que je te demande une facture, tu me refais exactement la m&ecirc;me facture en modifiant par rapport &agrave; ce que je veux&nbsp;&raquo;</li>
-          <li>L'IA cr&eacute;e automatiquement le skill</li>
-        </ol>
-      </article>
-
-      <!-- 6. N8N -->
-      <article>
-        <h3>6. N8N &mdash; Outil d'automatisation</h3>
-
-        <dl>
-          <dt>D&eacute;finition</dt>
-          <dd>Tableau blanc o&ugrave; on connecte des blocs entre eux pour cr&eacute;er des workflows automatis&eacute;s</dd>
-        </dl>
-
-        <p class="label">Chiffres cl&eacute;s :</p>
-        <ul>
-          <li>70&nbsp;000 &eacute;toiles GitHub</li>
-          <li>Plus de 200&nbsp;000 utilisateurs actifs</li>
-          <li>1&nbsp;286 nodes (blocs) disponibles</li>
-        </ul>
-
-        <p class="label">Architecture :</p>
-        <dl>
-          <dt>Trigger (D&eacute;clencheur)</dt>
-          <dd>&Eacute;v&eacute;nement qui lance le workflow (ex&nbsp;: &laquo;&nbsp;tous les jours &agrave; 8h&nbsp;&raquo;, &laquo;&nbsp;quand je re&ccedil;ois un mail&nbsp;&raquo;, &laquo;&nbsp;nouvelle commande Shopify&nbsp;&raquo;)</dd>
-
-          <dt>Node (N&oelig;ud)</dt>
-          <dd>Bloc d'action individuel (envoyer mail, scraper site, poster r&eacute;seaux sociaux, appeler API)</dd>
-
-          <dt>Workflow</dt>
-          <dd>Encha&icirc;nement automatis&eacute; de A &agrave; Z</dd>
-        </dl>
-
-        <p class="label">Comparaison avec concurrents :</p>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Outil</th>
-                <th>Avantages</th>
-                <th>Type</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>N8N</strong></td>
-                <td>Gagne &laquo;&nbsp;haut la main&nbsp;&raquo;, plus flexible</td>
-                <td>Open source</td>
-              </tr>
-              <tr>
-                <td>Make</td>
-                <td>Solution payante</td>
-                <td>SaaS</td>
-              </tr>
-              <tr>
-                <td>Zapier</td>
-                <td>Similaire &agrave; Make</td>
-                <td>SaaS</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </article>
-
-      <!-- 7. MCP -->
-      <article>
-        <h3>7. MCP (Model Context Protocol)</h3>
-
-        <dl>
-          <dt>D&eacute;finition simple</dt>
-          <dd>&laquo;&nbsp;Une prise, un connecteur&nbsp;&raquo;</dd>
-
-          <dt>Fonction</dt>
-          <dd>Transforme Claude en expert instantan&eacute; d'un outil sp&eacute;cifique</dd>
-        </dl>
-
-        <p class="label">Exemple MCP N8N :</p>
-        <ul>
-          <li>Claude conna&icirc;t les 1&nbsp;286 nodes par c&oelig;ur</li>
-          <li>Sait exactement quel branchement faire &agrave; quel moment</li>
-          <li>Devient un expert de l'automatisation</li>
-        </ul>
-
-        <p class="label">Comparaison Avant / Apr&egrave;s MCP :</p>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Crit&egrave;re</th>
-                <th>Avant MCP</th>
-                <th>Avec MCP</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Apprentissage</td>
-                <td>Toute la documentation N8N &agrave; m&eacute;moriser</td>
-                <td>Aucun</td>
-              </tr>
-              <tr>
-                <td>Erreurs</td>
-                <td>Fr&eacute;quentes, hallucinations</td>
-                <td>Z&eacute;ro hallucination</td>
-              </tr>
-              <tr>
-                <td>Temps cr&eacute;ation</td>
-                <td>45 minutes pour workflow basique</td>
-                <td>3 minutes pour workflow complet</td>
-              </tr>
-              <tr>
-                <td>Couverture</td>
-                <td>Partielle</td>
-                <td>99&nbsp;% des propri&eacute;t&eacute;s</td>
-              </tr>
-              <tr>
-                <td>M&eacute;thode</td>
-                <td>Regarder 4 vid&eacute;os YouTube par action</td>
-                <td>Description en fran&ccedil;ais</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p class="label">Autres MCP disponibles :</p>
-        <ul>
-          <li><strong>MCP Notion :</strong> Envoi automatique de projets vers Notion</li>
-          <li>MCP disponibles pour de nombreux outils</li>
-        </ul>
-      </article>
-
-      <!-- 8. Écosystème -->
-      <article>
-        <h3>8. &Eacute;cosyst&egrave;me d'outils compl&eacute;mentaires</h3>
-
-        <dl>
-          <dt>Outcraper</dt>
-          <dd>Extraction de donn&eacute;es depuis les fiches Google My Business</dd>
-
-          <dt>GitHub</dt>
-          <dd>H&eacute;bergement et versioning du code</dd>
-
-          <dt>Vercel</dt>
-          <dd>D&eacute;ploiement automatique de sites web</dd>
-
-          <dt>Shopify API</dt>
-          <dd>Acc&egrave;s via Shopify Partner pour contr&ocirc;le total</dd>
-
-          <dt>Whisper</dt>
-          <dd>Transcription automatique audio vers texte</dd>
-
-          <dt>Gmail</dt>
-          <dd>Int&eacute;gration pour envoi d'emails automatis&eacute;s</dd>
-        </dl>
-      </article>
-    </section>
-
-    <!-- ═══════════════════════════════════
-         INSTALLATION
-    ═══════════════════════════════════ -->
-    <section id="installation">
-      <h2>Proc&eacute;dures d'Installation et Configuration</h2>
-
-      <article>
-        <h3>Installation Claude CLI (Windows)</h3>
-        <ol>
-          <li>Installer Node.js</li>
-          <li>Installer Git</li>
-          <li>Installer Claude CLI</li>
-          <li>Consulter le replay disponible dans l'espace formation pour guide d&eacute;taill&eacute;</li>
-        </ol>
-      </article>
-
-      <article>
-        <h3>Installation MCP N8N</h3>
-        <ol>
-          <li>Commande simple&nbsp;: Dire &agrave; Claude &laquo;&nbsp;Installe-moi le MCP N8N&nbsp;&raquo;</li>
-          <li>R&eacute;sultat&nbsp;: Claude devient automatiquement expert N8N</li>
-        </ol>
-        <p><strong>Recommandation&nbsp;:</strong> &laquo;&nbsp;Installez le MCP N8N complet, il va tout vous faire.&nbsp;&raquo;</p>
-      </article>
-
-      <article>
-        <h3>Cr&eacute;ation de Skills Personnalis&eacute;s</h3>
-        <ol>
-          <li><strong>&Eacute;tape&nbsp;1&nbsp;:</strong> R&eacute;aliser la t&acirc;che compl&egrave;te avec l'IA</li>
-          <li><strong>&Eacute;tape&nbsp;2&nbsp;:</strong> Instruction &laquo;&nbsp;&Agrave; chaque fois que je demande [t&acirc;che], refais exactement pareil en modifiant uniquement les variables&nbsp;&raquo;</li>
-          <li><strong>&Eacute;tape&nbsp;3&nbsp;:</strong> L'IA m&eacute;morise automatiquement le skill</li>
-        </ol>
-      </article>
-
-      <article>
-        <h3>R&eacute;cup&eacute;ration API Shopify</h3>
-        <ol>
-          <li>Cr&eacute;er un compte Shopify Partner</li>
-          <li>Demander l'API de sa propre boutique via l'interface partenaire</li>
-          <li>Obtenir le contr&ocirc;le total (API admin)</li>
-        </ol>
-      </article>
-
-      <article>
-        <h3>Utilisation N8N avec Claude</h3>
-        <ol>
-          <li>D&eacute;crire l'automatisation souhait&eacute;e &agrave; Claude (vocal ou texte)</li>
-          <li><strong>G&eacute;n&eacute;ration&nbsp;:</strong> Claude cr&eacute;e le workflow JSON</li>
-          <li><strong>Import&nbsp;:</strong> Importer le workflow dans N8N</li>
-          <li><strong>Lancement&nbsp;:</strong> Cliquer sur &laquo;&nbsp;Start&nbsp;&raquo;</li>
-        </ol>
-      </article>
-    </section>
-
-    <!-- ═══════════════════════════════════
-         BUSINESS PLAN
-    ═══════════════════════════════════ -->
-    <section id="business-plan">
-      <h2>Business Plan : Prospection Automatis&eacute;e</h2>
-
-      <p><strong>Cas d'&eacute;tude&nbsp;:</strong> Sites vitrines pour plombiers</p>
-      <p><strong>Principe&nbsp;:</strong> Identifier des artisans sans site web, cr&eacute;er automatiquement un site personnalis&eacute;, et les d&eacute;marcher avec la maquette pr&ecirc;te.</p>
-
-      <article>
-        <h3>Workflow complet en 7 &eacute;tapes</h3>
-
-        <div class="step">
-          <h4>&Eacute;tape 1 &mdash; Configuration du filtre</h4>
-          <ul>
-            <li>Crit&egrave;res de recherche&nbsp;: &laquo;&nbsp;Plombier Paris&nbsp;&raquo;</li>
-            <li>Limite de r&eacute;sultats&nbsp;: 20 prospects</li>
-          </ul>
-        </div>
-
-        <div class="step">
-          <h4>&Eacute;tape 2 &mdash; Scraping avec Outcraper</h4>
-          <ul>
-            <li>Utilisation de l'API Outcraper</li>
-            <li>Extraction des fiches Google My Business</li>
-            <li>Filtre sp&eacute;cifique&nbsp;: Plombiers qui ont une fiche Google MAIS pas de site internet</li>
-            <li>Donn&eacute;es r&eacute;cup&eacute;r&eacute;es&nbsp;: nom entreprise, adresse, email</li>
-          </ul>
-        </div>
-
-        <div class="step">
-          <h4>&Eacute;tape 3 &mdash; G&eacute;n&eacute;ration automatique du site</h4>
-          <ul>
-            <li>Envoi des donn&eacute;es &agrave; Claude ou Gemini via API</li>
-            <li>Prompt&nbsp;: &laquo;&nbsp;G&eacute;n&egrave;re un site vitrine HTML, complet et moderne pour un plombier&nbsp;&raquo;</li>
-            <li>Personnalisation automatique avec les donn&eacute;es extraites (nom, adresse, coordonn&eacute;es)</li>
-          </ul>
-        </div>
-
-        <div class="step">
-          <h4>&Eacute;tape 4 &mdash; H&eacute;bergement sur GitHub</h4>
-          <ul>
-            <li>Code HTML automatiquement enregistr&eacute; dans un repository GitHub</li>
-          </ul>
-        </div>
-
-        <div class="step">
-          <h4>&Eacute;tape 5 &mdash; D&eacute;ploiement sur Vercel</h4>
-          <ul>
-            <li>Push automatique du repository sur Vercel</li>
-            <li>G&eacute;n&eacute;ration d'une URL de pr&eacute;visualisation fonctionnelle</li>
-          </ul>
-        </div>
-
-        <div class="step">
-          <h4>&Eacute;tape 6 &mdash; R&eacute;daction de l'email de prospection</h4>
-          <ul>
-            <li>Composition automatique d'un mail personnalis&eacute;</li>
-            <li>Contenu type&nbsp;: &laquo;&nbsp;Je me permets de vous contacter car j'ai remarqu&eacute; que [nom entreprise] n'a pas encore de site Internet alors que vos concurrents &agrave; Paris en ont d&eacute;j&agrave; un. J'ai pris l'initiative de cr&eacute;er une maquette de site vitrine. Ce site est enti&egrave;rement personnalis&eacute; avec vos coordonn&eacute;es pour 200&nbsp;&euro;.&nbsp;&raquo;</li>
-          </ul>
-        </div>
-
-        <div class="step">
-          <h4>&Eacute;tape 7 &mdash; Envoi automatique</h4>
-          <ul>
-            <li>Envoi via l'int&eacute;gration Gmail dans N8N</li>
-            <li>Email contenant le lien vers la maquette Vercel</li>
-            <li>Utilisation de la bo&icirc;te email personnelle pour &eacute;viter les spams</li>
-          </ul>
-        </div>
-      </article>
-
-      <article>
-        <h3>R&eacute;sultats concrets obtenus</h3>
-        <ul class="results">
-          <li>&#9989; <strong>Cas&nbsp;1&nbsp;:</strong> Personne ayant lanc&eacute; le syst&egrave;me contact&eacute;e par Pages Jaunes d&egrave;s le lendemain pour r&eacute;f&eacute;rencement prioritaire</li>
-          <li>&#9989; <strong>Cas&nbsp;2&nbsp;:</strong> Entrepreneur am&eacute;ricain sur Twitter g&eacute;n&eacute;rant 2&nbsp;000&nbsp;$ de revenus avec cette exacte m&eacute;thode</li>
-          <li>&#9989; <strong>Validation&nbsp;:</strong> Le formateur a pr&eacute;dit cette technique avant sa viralisation aux &Eacute;tats-Unis</li>
-        </ul>
-      </article>
-    </section>
-
-    <!-- ═══════════════════════════════════
-         CAS D'USAGE
-    ═══════════════════════════════════ -->
-    <section id="cas-usage">
-      <h2>Cas d'Usage Concrets Mentionn&eacute;s</h2>
-
-      <article>
-        <h3>Applications r&eacute;ussies</h3>
-        <ol>
-          <li><strong>Cr&eacute;ation de sections Shopify&nbsp;:</strong> Utilisation de Claude pour coder des &eacute;l&eacute;ments e-commerce</li>
-          <li><strong>Designs avec Gemini&nbsp;:</strong> G&eacute;n&eacute;ration d'&eacute;l&eacute;ments visuels et graphiques</li>
-          <li><strong>Assistant de closing mobile&nbsp;:</strong> G&eacute;n&eacute;rer une facture de 1&nbsp;200&nbsp;&euro; pendant un rendez-vous client</li>
-          <li><strong>Skill Facture m&eacute;moris&eacute;&nbsp;:</strong> Format automatiquement reproduit &agrave; chaque demande</li>
-          <li><strong>Prospection artisans automatis&eacute;e&nbsp;:</strong> Workflow complet de g&eacute;n&eacute;ration de leads</li>
-          <li><strong>Gestion d'avis automatique&nbsp;:</strong> Service de r&eacute;ponses automatis&eacute;es aux avis Google My Business</li>
-          <li><strong>Contr&ocirc;le d'ordinateur &agrave; distance&nbsp;:</strong> Commander applications et fichiers depuis mobile</li>
-          <li><strong>SMMIA&nbsp;:</strong> Agence de marketing enti&egrave;rement automatis&eacute;e</li>
-        </ol>
-      </article>
-
-      <article>
-        <h3>Exemple de workflow alternatif mentionn&eacute;</h3>
-        <p><strong>Gestion d'emails conditionnelle&nbsp;:</strong></p>
-        <blockquote>
-          &laquo;&nbsp;Je veux cr&eacute;er une automatisation pour que quand je re&ccedil;ois un mail &agrave; partir de 16 heures, tu envoies des messages &agrave; tout le monde et que les messages tu les enregistres dans un Google Sheet.&nbsp;&raquo;
-        </blockquote>
-      </article>
-    </section>
-
-    <!-- ═══════════════════════════════════
-         POINTS CLÉS
-    ═══════════════════════════════════ -->
-    <section id="points-cles">
-      <h2>Points Cl&eacute;s &agrave; Retenir</h2>
-
-      <ul class="keypoints">
-        <li>&#128161; <strong>Nouvelle mentalit&eacute; business&nbsp;:</strong> Avant de lancer un business, se poser la question &laquo;&nbsp;Est-ce que je peux l'automatiser&nbsp;?&nbsp;&raquo;</li>
-        <li>&#9200; <strong>Avantage temporel&nbsp;:</strong> Possibilit&eacute; de tester un business plan en 1 heure au lieu de s'y consacrer &agrave; 100&nbsp;%</li>
-        <li>&#128683; <strong>Risque d'hallucination&nbsp;:</strong> Sans MCP, l'IA peut inventer des propri&eacute;t&eacute;s inexistantes et cr&eacute;er des workflows non-fonctionnels</li>
-        <li>&#128640; <strong>Performance Terminal&nbsp;:</strong> Connexion directe au processeur = IA significativement plus puissante qu'en navigateur</li>
-        <li>&#128268; <strong>MCP = Expert instantan&eacute;&nbsp;:</strong> Les MCP donnent acc&egrave;s &agrave; toute la documentation et expertise d'un outil sans apprentissage</li>
-        <li>&#128176; <strong>Rentabilit&eacute;&nbsp;:</strong> &laquo;&nbsp;Si vous pouvez l'automatiser, c'est qu'elle [l'id&eacute;e business] est rentable.&nbsp;&raquo;</li>
-      </ul>
-    </section>
-
-    <!-- ═══════════════════════════════════
-         RESSOURCES
-    ═══════════════════════════════════ -->
-    <section id="ressources">
-      <h2>Ressources et Support Disponibles</h2>
-
-      <article>
-        <h3>Ressources p&eacute;dagogiques</h3>
-        <dl>
-          <dt>Replays complets</dt>
-          <dd>Tous les lives disponibles dans l'espace formation</dd>
-
-          <dt>Bot Whisper</dt>
-          <dd>Transcription automatique de chaque mot prononc&eacute; en live</dd>
-
-          <dt>Documentation d'installation</dt>
-          <dd>Guides d&eacute;taill&eacute;s pour tous les outils</dd>
-
-          <dt>Workflows exportables</dt>
-          <dd>Fichiers JSON pr&ecirc;ts &agrave; importer dans N8N</dd>
-        </dl>
-      </article>
-
-      <article>
-        <h3>Support communautaire</h3>
-        <dl>
-          <dt>Lien API Shopify</dt>
-          <dd>Disponible dans le chat Discord</dd>
-
-          <dt>Canaux Discord sp&eacute;cialis&eacute;s</dt>
-          <dd>SMMA, e-commerce, fiscalit&eacute; (accessibles via &laquo;&nbsp;Afficher tous les canaux&nbsp;&raquo;)</dd>
-
-          <dt>Aide communautaire</dt>
-          <dd>&laquo;&nbsp;&Eacute;crivez &lsquo;je suis nouveau&rsquo; dans le canal g&eacute;n&eacute;ral, tout le monde va vous aider.&nbsp;&raquo;</dd>
-        </dl>
-      </article>
-    </section>
-
-    <!-- ═══════════════════════════════════
-         VOCABULAIRE
-    ═══════════════════════════════════ -->
-    <section id="vocabulaire">
-      <h2>Vocabulaire Technique</h2>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Terme</th>
-              <th>D&eacute;finition</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Workflow</td>
-              <td>Encha&icirc;nement d'actions automatis&eacute;es de A &agrave; Z</td>
-            </tr>
-            <tr>
-              <td>Trigger</td>
-              <td>&Eacute;v&eacute;nement d&eacute;clencheur d'une automatisation</td>
-            </tr>
-            <tr>
-              <td>Node</td>
-              <td>Bloc d'action individuel dans un workflow</td>
-            </tr>
-            <tr>
-              <td>Hallucination</td>
-              <td>R&eacute;ponse erron&eacute;e invent&eacute;e par l'IA faute d'information</td>
-            </tr>
-            <tr>
-              <td>Scraping</td>
-              <td>Extraction automatique de donn&eacute;es depuis des sites web</td>
-            </tr>
-            <tr>
-              <td>API</td>
-              <td>Interface permettant la communication entre logiciels</td>
-            </tr>
-            <tr>
-              <td>VPS</td>
-              <td>Serveur priv&eacute; virtuel lou&eacute; &agrave; distance</td>
-            </tr>
-            <tr>
-              <td>CLI</td>
-              <td>Interface en ligne de commande (terminal)</td>
-            </tr>
-            <tr>
-              <td>MCP</td>
-              <td>Model Context Protocol &mdash; connecteur d'expertise pour IA</td>
-            </tr>
-            <tr>
-              <td>JSON</td>
-              <td>Format de donn&eacute;es pour exporter/importer des workflows</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════
-         CONCLUSION
-    ═══════════════════════════════════ -->
-    <section id="conclusion">
-      <h2>Conclusion</h2>
-
-      <dl>
-        <dt>Objectif atteint</dt>
-        <dd>Transformation de la fa&ccedil;on de travailler gr&acirc;ce &agrave; l'automatisation intelligente</dd>
-      </dl>
-
-      <blockquote>
-        &laquo;&nbsp;&Agrave; partir d'aujourd'hui, s'il y a des gens qui ne font pas d'oseille, c'est pas normal. L&agrave; il y a un workflow complet pour automatiser en volume.&nbsp;&raquo;
-        <cite>Message final du formateur</cite>
-      </blockquote>
-
-      <p class="label">Prochaines &eacute;tapes :</p>
-      <ul>
-        <li>Appliquer les workflows pr&eacute;sent&eacute;s</li>
-        <li>Tester les automatisations avec les outils configur&eacute;s</li>
-        <li>D&eacute;velopper ses propres business plans automatis&eacute;s</li>
-      </ul>
-
-      <blockquote class="warn">
-        &#9888;&#65039; <strong>Note importante&nbsp;:</strong> Toutes les informations sont bas&eacute;es strictement sur le contenu du cours. Les replays et documentations compl&eacute;mentaires sont disponibles dans l'espace formation pour approfondir la pratique.
-      </blockquote>
-    </section>
-
-  </main>
-
-  <footer>
-    <p>Automatisation Business avec l'IA &mdash; Notes de cours &mdash; GitHub Pages</p>
-  </footer>
-
-</body>
-</html>
 </div>
 
 </body>
