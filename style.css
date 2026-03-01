@@ -1,355 +1,148 @@
-/* =====================================================
-   Automatisation Business avec l'IA — style.css
-   Aucune dependance externe · GitHub Pages
-   ===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
-/* ── Reset ── */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* ── Base ── */
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background-color: #f8f7f4;
-  color: #1c1917;
-  font-family: Georgia, 'Times New Roman', serif;
-  line-height: 1.75;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
 }
 
-/* ── Layout ── */
-header,
-nav,
-main,
-footer {
-  width: 100%;
-  max-width: 820px;
-  margin: 0 auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+.layout {
+    display: flex;
 }
 
-/* ── Header ── */
-header {
-  text-align: center;
-  padding-top: 2.5rem;
-  padding-bottom: 2rem;
-  border-bottom: 2px solid #1c1917;
-  margin-bottom: 0;
+/* Sidebar */
+
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    position: fixed;
 }
 
-header .cat {
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #78716c;
-  margin-bottom: 0.6rem;
+.sidebar h2 {
+    margin-bottom: 30px;
 }
 
-header h1 {
-  font-size: 1.85rem;
-  font-weight: normal;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-  margin-bottom: 0.35rem;
+.sidebar nav a {
+    display: block;
+    margin-bottom: 15px;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
-header .sub {
-  font-size: 0.88rem;
-  color: #78716c;
-  font-style: italic;
+.sidebar nav a:hover {
+    color: white;
+    transform: translateX(5px);
 }
 
-/* ── Navigation ── */
-nav {
-  padding-top: 0.9rem;
-  padding-bottom: 0.9rem;
-  border-bottom: 1px solid #d6d3d1;
-  margin-bottom: 2.5rem;
+/* Content */
+
+.content {
+    margin-left: 240px;
+    padding: 60px;
+    width: 100%;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem 0;
+.hero {
+    margin-bottom: 80px;
 }
 
-nav ul li {
-  margin: 0;
+.hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 20px;
 }
 
-nav ul li::after {
-  content: ' · ';
-  color: #d6d3d1;
-  font-size: 0.8rem;
+.hero p {
+    font-size: 18px;
+    color: #94a3b8;
+    margin-bottom: 30px;
 }
 
-nav ul li:last-child::after {
-  content: '';
+.hero button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    background: #6366f1;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-nav a {
-  font-size: 0.82rem;
-  color: #44403c;
-  text-decoration: none;
-  padding: 0.1rem 0.3rem;
+.hero button:hover {
+    background: #4f46e5;
+    transform: scale(1.05);
 }
 
-nav a:hover {
-  color: #1c1917;
-  text-decoration: underline;
+/* Sections */
+
+.section {
+    margin-bottom: 80px;
 }
 
-/* ── Main sections ── */
-main {
-  padding-top: 0;
-  padding-bottom: 4rem;
+.section h2 {
+    margin-bottom: 30px;
 }
 
-section {
-  margin-bottom: 3rem;
+/* Cards */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
 }
 
-/* ── Headings ── */
-h2 {
-  font-size: 1.25rem;
-  font-weight: bold;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #1c1917;
-  border-bottom: 2px solid #1c1917;
-  padding-bottom: 0.4rem;
-  margin-bottom: 1.5rem;
+.card {
+    background: rgba(255,255,255,0.07);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(12px);
+    transition: 0.3s;
 }
 
-h3 {
-  font-size: 1.05rem;
-  font-weight: bold;
-  color: #1c1917;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
+.card:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,0.12);
 }
 
-h4 {
-  font-size: 0.92rem;
-  font-weight: bold;
-  color: #44403c;
-  margin-bottom: 0.5rem;
+.price {
+    font-size: 24px;
+    font-weight: 800;
+    margin: 15px 0;
 }
 
-/* ── Article cards ── */
-article {
-  background-color: #ffffff;
-  border: 1px solid #e7e5e0;
-  border-radius: 4px;
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 1rem;
+.pricing button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #22c55e;
+    color: white;
+    cursor: pointer;
 }
 
-article h3 {
-  margin-top: 0;
+.highlight {
+    border: 2px solid #6366f1;
 }
 
-/* ── Definition lists ── */
-dl {
-  margin-bottom: 1rem;
-}
+/* Responsive */
 
-dt {
-  font-weight: bold;
-  font-size: 0.88rem;
-  color: #44403c;
-  margin-top: 0.75rem;
-}
+@media(max-width: 900px) {
+    .sidebar {
+        display: none;
+    }
 
-dt:first-child {
-  margin-top: 0;
-}
-
-dd {
-  margin-left: 0;
-  padding-left: 1rem;
-  border-left: 2px solid #e7e5e0;
-  color: #44403c;
-  font-size: 0.93rem;
-  margin-top: 0.2rem;
-  margin-bottom: 0.1rem;
-}
-
-/* ── Paragraphs ── */
-p {
-  color: #44403c;
-  margin-bottom: 0.75rem;
-}
-
-p:last-child {
-  margin-bottom: 0;
-}
-
-p.label {
-  font-weight: bold;
-  font-size: 0.88rem;
-  color: #1c1917;
-  margin-top: 1rem;
-  margin-bottom: 0.4rem;
-}
-
-/* ── Lists ── */
-ul,
-ol {
-  padding-left: 1.4rem;
-  color: #44403c;
-  margin-bottom: 0.75rem;
-}
-
-li {
-  margin: 0.3rem 0;
-  font-size: 0.93rem;
-  line-height: 1.65;
-}
-
-ul.keypoints {
-  list-style: none;
-  padding-left: 0;
-}
-
-ul.keypoints li {
-  background-color: #ffffff;
-  border: 1px solid #e7e5e0;
-  border-left: 3px solid #1c1917;
-  border-radius: 0 4px 4px 0;
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.6rem;
-  font-size: 0.93rem;
-}
-
-ul.results {
-  list-style: none;
-  padding-left: 0;
-}
-
-ul.results li {
-  background-color: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  border-radius: 4px;
-  padding: 0.65rem 1rem;
-  margin-bottom: 0.5rem;
-  font-size: 0.93rem;
-}
-
-/* ── Blockquotes ── */
-blockquote {
-  border-left: 3px solid #1c1917;
-  padding: 0.7rem 1rem;
-  margin: 1rem 0;
-  background-color: #f5f4f1;
-  border-radius: 0 4px 4px 0;
-  font-style: italic;
-  color: #44403c;
-  font-size: 0.93rem;
-}
-
-blockquote cite {
-  display: block;
-  font-size: 0.75rem;
-  font-style: normal;
-  color: #78716c;
-  margin-top: 0.4rem;
-  letter-spacing: 0.04em;
-}
-
-blockquote.warn {
-  background-color: #fffbeb;
-  border-left-color: #f59e0b;
-  font-style: normal;
-}
-
-/* ── Tables ── */
-.table-wrap {
-  overflow-x: auto;
-  margin: 0.75rem 0 1rem;
-  border: 1px solid #e7e5e0;
-  border-radius: 4px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.88rem;
-}
-
-thead {
-  background-color: #1c1917;
-  color: #f8f7f4;
-}
-
-th {
-  padding: 0.6rem 0.9rem;
-  text-align: left;
-  font-weight: normal;
-  font-size: 0.75rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-}
-
-td {
-  padding: 0.55rem 0.9rem;
-  border-top: 1px solid #e7e5e0;
-  color: #44403c;
-  vertical-align: top;
-}
-
-tr:hover td {
-  background-color: #f8f7f4;
-}
-
-/* ── Workflow steps ── */
-.step {
-  border: 1px solid #e7e5e0;
-  border-left: 3px solid #78716c;
-  border-radius: 0 4px 4px 0;
-  padding: 0.9rem 1.1rem;
-  margin-bottom: 0.75rem;
-  background-color: #fafaf9;
-}
-
-.step h4 {
-  margin-bottom: 0.5rem;
-  color: #1c1917;
-}
-
-/* ── Footer ── */
-footer {
-  text-align: center;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-top: 1px solid #e7e5e0;
-  font-size: 0.75rem;
-  color: #a8a29e;
-}
-
-/* ── Responsive ── */
-@media (max-width: 640px) {
-  html {
-    font-size: 15px;
-  }
-
-  header h1 {
-    font-size: 1.45rem;
-  }
-
-  article {
-    padding: 1rem 1rem;
-  }
-
-  nav ul {
-    gap: 0.15rem 0;
-  }
+    .content {
+        margin-left: 0;
+        padding: 30px;
+    }
 }
