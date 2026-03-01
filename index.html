@@ -1,48 +1,155 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Mon super site</title>
-    <style>
-        body {
-            background-color: #f0f4ff;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 100px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatisation Business IA</title>
 
-        h1 {
-            color: #4a4aff;
-            font-size: 40px;
-        }
+<style>
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#0f172a;
+  color:white;
+  display:flex;
+}
 
-        p {
-            font-size: 20px;
-            color: #333;
-        }
+.sidebar {
+  width:250px;
+  background:#111827;
+  padding:20px;
+  height:100vh;
+  position:fixed;
+}
 
-        button {
-            background-color: #4a4aff;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
+.sidebar h2 {
+  font-size:18px;
+  margin-bottom:20px;
+}
 
-        button:hover {
-            background-color: #2f2fd6;
-        }
-    </style>
+.sidebar a {
+  display:block;
+  color:#9ca3af;
+  text-decoration:none;
+  margin-bottom:10px;
+}
+
+.sidebar a:hover {
+  color:white;
+}
+
+.content {
+  margin-left:270px;
+  padding:40px;
+  max-width:900px;
+}
+
+.card {
+  background:#1e293b;
+  padding:25px;
+  border-radius:12px;
+  margin-bottom:30px;
+}
+
+h1, h2, h3 {
+  color:#38bdf8;
+}
+
+ul {
+  line-height:1.6;
+}
+</style>
 </head>
 
 <body>
-    <h1>Bienvenue sur mon site 🚀</h1>
-    <p>Maintenant il est stylé 😎</p>
 
-    <button onclick="alert('Bravo tu apprends le code ! 🎉')">
-        Clique-moi
-    </button>
+<div class="sidebar">
+  <h2>📚 Menu</h2>
+  <a href="#intro">Introduction</a>
+  <a href="#concepts">Concepts</a>
+  <a href="#n8n">N8N</a>
+  <a href="#mcp">MCP</a>
+  <a href="#business">Business Plan</a>
+  <a href="#vocab">Vocabulaire</a>
+</div>
+
+<div class="content">
+
+<h1>🤖 Automatisation Business avec l'IA</h1>
+
+<div id="intro" class="card">
+<h2>📌 Introduction</h2>
+<ul>
+<li>SMMIA = SMMA + IA</li>
+<li>Objectif : automatiser pour générer des revenus</li>
+<li>Faire travailler des agents IA à sa place</li>
+</ul>
+</div>
+
+<div id="concepts" class="card">
+<h2>🧠 Concepts Techniques</h2>
+
+<h3>IA Terminal</h3>
+<ul>
+<li>Connexion directe au processeur</li>
+<li>Performance maximale</li>
+</ul>
+
+<h3>Claude CLI</h3>
+<ul>
+<li>Version terminal de Claude</li>
+<li>Création Shopify & automatisations</li>
+</ul>
+
+<h3>VPS</h3>
+<ul>
+<li>Serveur virtuel 24/7</li>
+<li>10-15€/mois</li>
+</ul>
+</div>
+
+<div id="n8n" class="card">
+<h2>⚙️ N8N</h2>
+<ul>
+<li>Open source</li>
+<li>1286 nodes</li>
+<li>Workflow = Trigger → Nodes → Automatisation</li>
+</ul>
+</div>
+
+<div id="mcp" class="card">
+<h2>🔌 MCP</h2>
+<ul>
+<li>Transforme Claude en expert instantané</li>
+<li>Réduction des erreurs</li>
+<li>Création ultra rapide</li>
+</ul>
+</div>
+
+<div id="business" class="card">
+<h2>🚀 Prospection Automatisée</h2>
+<ol>
+<li>Scraping plombiers sans site</li>
+<li>Génération site HTML</li>
+<li>Upload GitHub</li>
+<li>Déploiement Vercel</li>
+<li>Email automatique</li>
+</ol>
+</div>
+
+<div id="vocab" class="card">
+<h2>📚 Vocabulaire</h2>
+<ul>
+<li>Workflow</li>
+<li>Trigger</li>
+<li>Node</li>
+<li>API</li>
+<li>Scraping</li>
+<li>MCP</li>
+</ul>
+</div>
+
+</div>
+
 </body>
 </html>
