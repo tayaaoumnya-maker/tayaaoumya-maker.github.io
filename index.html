@@ -1,188 +1,193 @@
-<!-- ================= INTRODUCTION ================= -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMMIA - Automatisation Business</title>
 
-<section id="introduction">
-  <h2>📌 Introduction</h2>
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f172a;
+  color: #f1f5f9;
+  display: flex;
+}
 
-  <div class="card">
-    <h3>🎯 Objectif du cours</h3>
-    <p>Comprendre l’automatisation business grâce à l’IA et générer des revenus de manière intelligente et scalable.</p>
-  </div>
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background: #111827;
+  height: 100vh;
+  padding: 20px;
+  position: fixed;
+}
 
-  <div class="card">
-    <h3>🧠 Concept Clé : SMMIA</h3>
-    <p><strong>SMMIA</strong> = Social Media Marketing + Intelligence Artificielle</p>
-    <p>Combinaison entre la vente de services (SMMA) et l’automatisation par IA.</p>
-  </div>
+.sidebar h2 {
+  color: #38bdf8;
+}
 
-  <div class="card">
-    <h3>💭 Philosophie</h3>
-    <p>Créer des agents qui travaillent pour vous pendant que vous vivez votre vie.</p>
-  </div>
+.sidebar a {
+  display: block;
+  color: #cbd5e1;
+  text-decoration: none;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.sidebar a:hover {
+  color: #38bdf8;
+}
+
+/* Main content */
+.content {
+  margin-left: 260px;
+  padding: 40px;
+  max-width: 1000px;
+}
+
+/* Section */
+section {
+  margin-bottom: 60px;
+}
+
+/* Cards */
+.card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(56,189,248,0.3);
+}
+
+h2 {
+  color: #38bdf8;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: #f8fafc;
+}
+
+ul, ol {
+  padding-left: 20px;
+}
+
+strong {
+  color: #38bdf8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+  <h2>🚀 SMMIA</h2>
+  <a href="#intro">Introduction</a>
+  <a href="#concepts">Concepts</a>
+  <a href="#automatisation">Automatisation</a>
+  <a href="#business">Business Plan</a>
+  <a href="#glossaire">Glossaire</a>
+  <a href="#conclusion">Conclusion</a>
+</div>
+
+<div class="content">
+
+<section id="intro">
+<h2>Introduction</h2>
+
+<div class="card">
+<h3>🎯 Objectif</h3>
+<p>Comprendre l’automatisation business grâce à l’IA et générer des revenus scalables.</p>
+</div>
+
+<div class="card">
+<h3>🧠 SMMIA</h3>
+<p><strong>SMMIA</strong> = Social Media Marketing + Intelligence Artificielle</p>
+<p>Automatiser la prestation de services via IA.</p>
+</div>
+
+<div class="card">
+<h3>💭 Philosophie</h3>
+<p>Créer des agents qui bossent pour vous.</p>
+</div>
 </section>
-
-
-<!-- ================= CONCEPTS TECHNIQUES ================= -->
 
 <section id="concepts">
-  <h2>⚙️ Concepts Techniques Fondamentaux</h2>
+<h2>Concepts Techniques</h2>
 
-  <div class="card">
-    <h3>IA Navigateur vs Terminal</h3>
-    <ul>
-      <li><strong>Navigateur :</strong> Performances limitées, contexte restreint</li>
-      <li><strong>Terminal :</strong> Connexion directe au processeur, puissance maximale</li>
-      <li>Analogie : moteur thermique vs moteur électrique</li>
-    </ul>
-  </div>
+<div class="card">
+<h3>IA Navigateur vs Terminal</h3>
+<ul>
+<li><strong>Navigateur :</strong> limité</li>
+<li><strong>Terminal :</strong> connexion directe processeur</li>
+<li>Analogie moteur thermique vs électrique</li>
+</ul>
+</div>
 
-  <div class="card">
-    <h3>Claude CLI</h3>
-    <p>Version IA exécutée dans le terminal.</p>
-    <ul>
-      <li>Plus puissante que navigateur</li>
-      <li>Permet automatisations avancées</li>
-      <li>Installation : Node.js → Git → Claude CLI</li>
-    </ul>
-  </div>
+<div class="card">
+<h3>Claude CLI</h3>
+<p>Version IA dans terminal.</p>
+<ul>
+<li>Plus puissant</li>
+<li>Node.js → Git → Claude CLI</li>
+</ul>
+</div>
 
-  <div class="card">
-    <h3>Open CL</h3>
-    <p>Assistant IA accessible depuis mobile (WhatsApp, Discord…).</p>
-    <ul>
-      <li>Accès temps réel à l’ordinateur</li>
-      <li>Exécution de tâches à distance</li>
-      <li>Ordinateur doit rester allumé (VPS recommandé)</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h3>VPS</h3>
-    <p>Serveur virtuel loué (10–15€/mois) permettant de garder les automatisations actives 24h/24.</p>
-  </div>
+<div class="card">
+<h3>N8N & MCP</h3>
+<ul>
+<li>Workflow = Trigger → Nodes → Automatisation</li>
+<li>MCP = expert instantané</li>
+<li>45 min → 3 min avec MCP</li>
+</ul>
+</div>
 </section>
-
-
-<!-- ================= AUTOMATISATION ================= -->
-
-<section id="automatisation">
-  <h2>🤖 Automatisation & Outils</h2>
-
-  <div class="card">
-    <h3>Skills IA</h3>
-    <ul>
-      <li>Mobile First</li>
-      <li>Front-end Design</li>
-      <li>UI/UX</li>
-      <li>Facturation automatique</li>
-    </ul>
-    <p><strong>Méthode :</strong> Faire la tâche complète → Demander répétition automatique → Skill mémorisé.</p>
-  </div>
-
-  <div class="card">
-    <h3>N8N</h3>
-    <ul>
-      <li>70 000⭐ GitHub</li>
-      <li>200 000+ utilisateurs</li>
-      <li>1286 nodes</li>
-    </ul>
-    <p>Architecture : Trigger → Nodes → Workflow complet</p>
-  </div>
-
-  <div class="card">
-    <h3>MCP (Model Context Protocol)</h3>
-    <p>Connecteur transformant Claude en expert instantané d’un outil.</p>
-    <ul>
-      <li>Avant MCP : hallucinations possibles</li>
-      <li>Avec MCP : 99% couverture, zéro erreur</li>
-      <li>Création workflow : 45 min → 3 min</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h3>Écosystème</h3>
-    <ul>
-      <li>Outcraper (scraping Google)</li>
-      <li>GitHub (hébergement)</li>
-      <li>Vercel (déploiement)</li>
-      <li>Shopify API</li>
-      <li>Whisper (transcription)</li>
-      <li>Gmail (emails automatisés)</li>
-    </ul>
-  </div>
-</section>
-
-
-<!-- ================= BUSINESS PLAN ================= -->
 
 <section id="business">
-  <h2>💰 Business Plan : Prospection Automatisée</h2>
+<h2>Business Plan Automatisé</h2>
 
-  <div class="card">
-    <h3>Cas : Sites vitrines pour plombiers</h3>
-    <ol>
-      <li>Recherche "Plombier Paris"</li>
-      <li>Scraping Outcraper</li>
-      <li>Génération site HTML automatique</li>
-      <li>Upload GitHub</li>
-      <li>Déploiement Vercel</li>
-      <li>Email personnalisé automatique</li>
-      <li>Envoi via Gmail</li>
-    </ol>
-  </div>
+<div class="card">
+<h3>Prospection Plombiers</h3>
+<ol>
+<li>Scraping Google</li>
+<li>Génération site HTML</li>
+<li>Upload GitHub</li>
+<li>Déploiement Vercel</li>
+<li>Email automatique</li>
+</ol>
+</div>
 
-  <div class="card">
-    <h3>Résultats</h3>
-    <ul>
-      <li>Contact Pages Jaunes dès le lendemain</li>
-      <li>2 000$ générés aux USA avec cette méthode</li>
-    </ul>
-  </div>
 </section>
-
-
-<!-- ================= CAS D'USAGE ================= -->
-
-<section id="cas-usage">
-  <h2>📈 Cas d’Usage</h2>
-
-  <div class="card">
-    <ul>
-      <li>Sections Shopify automatisées</li>
-      <li>Designs générés via IA</li>
-      <li>Factures instantanées en closing</li>
-      <li>Gestion automatique avis Google</li>
-      <li>Assistant mobile IA</li>
-    </ul>
-  </div>
-</section>
-
-
-<!-- ================= GLOSSAIRE ================= -->
 
 <section id="glossaire">
-  <h2>📚 Vocabulaire Technique</h2>
+<h2>Glossaire</h2>
 
-  <div class="card">
-    <ul>
-      <li><strong>Workflow :</strong> Enchaînement automatisé d’actions</li>
-      <li><strong>Trigger :</strong> Déclencheur</li>
-      <li><strong>Node :</strong> Bloc d’action</li>
-      <li><strong>API :</strong> Interface entre logiciels</li>
-      <li><strong>MCP :</strong> Connecteur d’expertise IA</li>
-      <li><strong>JSON :</strong> Format d’export de données</li>
-    </ul>
-  </div>
+<div class="card">
+<ul>
+<li><strong>Workflow :</strong> enchaînement automatisé</li>
+<li><strong>Trigger :</strong> déclencheur</li>
+<li><strong>Node :</strong> bloc d’action</li>
+<li><strong>MCP :</strong> connecteur d’expertise IA</li>
+</ul>
+</div>
 </section>
-
-
-<!-- ================= CONCLUSION ================= -->
 
 <section id="conclusion">
-  <h2>🚀 Conclusion</h2>
+<h2>Conclusion</h2>
 
-  <div class="card">
-    <p>Nouvelle mentalité : avant de lancer un business, se demander s’il peut être automatisé.</p>
-    <p>Tester un business plan en 1 heure au lieu d’y consacrer 100% de son temps.</p>
-    <p><strong>Si c’est automatisable, c’est scalable.</strong></p>
-  </div>
+<div class="card">
+<p>Si c’est automatisable, c’est scalable.</p>
+</div>
 </section>
+
+</div>
+
+</body>
+</html>
