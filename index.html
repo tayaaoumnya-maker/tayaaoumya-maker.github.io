@@ -3,376 +3,278 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Notes — Session SMMIA — Automatisation & IA</title>
+<title>Notes — Live Jamel — SMMA</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
   :root{
-    --bg:#070615; --panel:#0e0b1a; --accent:#7C5CFF; --muted:#9aa4bf;
-    --card:#0f1724; --radius:12px; --glass: rgba(255,255,255,0.03);
+    --bg:#070615;
+    --panel:#0e0b1a;
+    --accent1:#7C5CFF;
+    --accent2:#3AB0FF;
+    --muted:#9aa4bf;
+    --glass: rgba(255,255,255,0.02);
+    --radius:12px;
+    --content-max:1120px;
   }
-  *{box-sizing:border-box} html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:#E6EDF3;background:linear-gradient(180deg,#05030a,#081025);-webkit-font-smoothing:antialiased}
-  header{
-    position:sticky; top:0; z-index:60; backdrop-filter: blur(6px);
-    background: linear-gradient(180deg, rgba(6,5,12,0.85), rgba(6,5,12,0.45));
-    border-bottom:1px solid rgba(255,255,255,0.04);
+
+  /* Reset / Base */
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:#E6EDF3;background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(124,92,255,0.03), transparent 8%),
+    radial-gradient(900px 500px at 90% 90%, rgba(59,176,255,0.02), transparent 10%),
+    linear-gradient(180deg,#05030a,#081025);
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
   }
-  .nav{max-width:1100px;margin:0 auto; display:flex; align-items:center; gap:18px; padding:12px 20px;}
-  .brand{font-weight:700; color:var(--accent); font-size:18px}
-  nav{margin-left:16px; display:flex; gap:8px; align-items:center; flex:1; flex-wrap:wrap;}
-  nav a{color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:8px; font-size:14px;}
-  nav a.active, nav a:hover{background:rgba(124,92,255,0.12); color:#fff; box-shadow:0 4px 20px rgba(124,92,255,0.08);}
-  .container{max-width:1100px;margin:28px auto;padding:0 20px;}
-  .grid{display:grid; grid-template-columns: 1fr; gap:18px;}
-  .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:20px; border-radius:12px; border:1px solid rgba(255,255,255,0.03);}
-  h1,h2,h3{margin:0 0 12px 0}
-  h1{font-size:22px;color:var(--accent)}
-  h2{font-size:18px;color:#fff; padding-top:6px}
-  p{color:var(--muted);line-height:1.5}
-  table{width:100%;border-collapse:collapse;margin-top:10px;color:var(--muted)}
-  table th, table td{padding:8px;border-bottom:1px solid rgba(255,255,255,0.03); text-align:left}
-  .muted{color:var(--muted);font-size:13px}
-  pre{background:rgba(0,0,0,0.25);padding:12px;border-radius:8px;overflow:auto;color:var(--muted)}
-  /* responsive */
-  @media(min-width:900px){ .grid{grid-template-columns: 1fr 360px;} .aside{position:sticky; top:84px; height:calc(100vh - 110px); overflow:auto} }
-  /* anchors */
-  section{scroll-margin-top:96px}
-  /* small screens */
-  @media(max-width:700px){
-    nav{gap:6px}
-    .nav{padding:10px}
+  a{color:inherit; text-decoration:none}
+
+  /* Header / Nav */
+  header.site-header{
+    position:sticky; top:0; z-index:90;
+    background: linear-gradient(180deg, rgba(6,5,12,0.86), rgba(6,5,12,0.45));
+    border-bottom:1px solid rgba(255,255,255,0.03);
+    backdrop-filter: blur(6px);
   }
+  .nav-inner{max-width:1400px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px}
+  .brand{font-weight:700;color:var(--accent1);display:flex;align-items:center;gap:10px}
+  .brand .dot{width:12px;height:12px;background:linear-gradient(90deg,var(--accent1),var(--accent2));border-radius:3px;display:inline-block}
+  nav.top-nav{margin-left:auto;display:flex;gap:12px;align-items:center}
+  nav.top-nav a{color:var(--muted);padding:8px 10px;border-radius:8px;font-weight:600;font-size:14px}
+  nav.top-nav a:hover{color:#fff;background:rgba(255,255,255,0.02)}
+
+  /* Layout */
+  .container{max-width:var(--content-max);margin:0 auto;padding:26px 20px}
+  .layout{display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:start}
+  @media (max-width:900px){ .layout{grid-template-columns:1fr; } .sidebar{display:none} }
+
+  /* Sidebar */
+  .sidebar{background:transparent;padding:10px;border-radius:10px;position:sticky;top:84px;height:calc(100vh - 100px)}
+  .sidebar nav{display:flex;flex-direction:column;gap:8px;position:relative}
+  .sidebar a{color:var(--muted);padding:8px 10px;border-radius:8px;font-weight:600;font-size:14px}
+  .sidebar a.active{background:linear-gradient(90deg, rgba(124,92,255,0.12), rgba(58,176,255,0.06)); color:#fff}
+
+  /* HERO background grid */
+  .hero-bg{
+    position:relative;
+    border-radius:14px;
+    padding:48px 20px 36px;
+    overflow:hidden;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px, 60px 60px;
+    margin-bottom:18px;
+  }
+
+  /* HERO content */
+  .hero{max-width:var(--content-max);margin:0 auto;text-align:center;padding:0 18px}
+  .hero .top-meta{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;color:var(--muted);font-weight:600;font-size:13px}
+  .hero h1{
+    font-size: clamp(28px, 6.4vw, 64px);
+    line-height:1.02;
+    margin:6px 0 14px;
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 .highlight{
+    background: linear-gradient(90deg, var(--accent1) 0%, var(--accent2) 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display:inline-block;
+  }
+  .hero .lead{
+    color:var(--muted);
+    max-width:920px;
+    margin:12px auto 0;
+    font-size:15px;
+    line-height:1.6;
+  }
+
+  /* hero card */
+  .hero-card{
+    margin:28px auto 0;
+    max-width:880px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+    border-radius:12px;
+    padding:18px;
+    border:1px solid rgba(255,255,255,0.03);
+    color:var(--muted);
+    text-align:left;
+  }
+  .hero-card strong{color:#FFD580}
+  .hero-card blockquote{margin:12px 0 0;font-style:italic;color:#fff}
+
+  /* Main sections */
+  main{padding:6px 0 60px}
+  .section{
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    border-radius:12px;padding:22px;border:1px solid rgba(255,255,255,0.02);
+    margin-bottom:18px;
+  }
+  .section h2{margin:0 0 12px;font-size:20px;color:#fff}
+  .section p{color:var(--muted);line-height:1.6}
+
   /* back to top */
-  #backTop{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#fff;padding:10px 12px;border-radius:10px;box-shadow:0 8px 30px rgba(124,92,255,0.15);border:none;cursor:pointer;display:none}
+  #backTop{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--accent1),var(--accent2));border:none;padding:10px;border-radius:12px;color:#081025;display:none;z-index:100;cursor:pointer;font-weight:700}
+
+  /* small util */
+  .muted{color:var(--muted);font-size:13px}
+  .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted);font-weight:700;font-size:12px}
+
+  /* smooth scroll anchor offset for sticky header */
+  [id]{scroll-margin-top:110px}
 </style>
 </head>
+
 <body>
 
-<header>
-  <div class="nav">
-    <div class="brand">Notes — Session SMMIA</div>
-    <nav id="topnav">
-      <a href="#infos">Infos</a>
-      <a href="#part1">Partie 1</a>
-      <a href="#part2">Partie 2</a>
-      <a href="#part3">Partie 3</a>
-      <a href="#part4">Partie 4</a>
-      <a href="#part5">Partie 5</a>
-      <a href="#part6">Partie 6</a>
-      <a href="#part7">Partie 7</a>
-      <a href="#recap">Récapitulatif</a>
-      <a href="#actions">Actions</a>
+<header class="site-header" role="banner">
+  <div class="nav-inner">
+    <div class="brand"><span class="dot" aria-hidden="true"></span> Notes — Live Jamel</div>
+
+    <nav class="top-nav" role="navigation" aria-label="Navigation principale">
+      <a href="#process">Process</a>
+      <a href="#design">Design</a>
+      <a href="#services">Services</a>
+      <a href="#outils">Outils</a>
+      <a href="#prospection">Prospection</a>
+      <a href="#vente">Vente</a>
+      <a href="#checklist">Checklist</a>
     </nav>
   </div>
 </header>
 
-<main class="container">
-  <div class="grid">
-    <div>
-      <!-- INFOS -->
-      <section id="infos" class="card section">
-        <h1>■ NOTES DE COURS — Session SMMIA</h1>
-        <p class="muted">Automatisation & Intelligence Artificielle — Transcription live communautaire (Discord, groupe Focus)</p>
+<div class="container">
 
-        <table>
-          <tr><th>Intervenant</th><td>Sony</td></tr>
-          <tr><th>Durée prévue</th><td>1 heure</td></tr>
-          <tr><th>Participants</th><td>122–130</td></tr>
-          <tr><th>Plateforme</th><td>Discord (groupe Focus)</td></tr>
-          <tr><th>Objectif</th><td>Passer d'une utilisation basique de l'IA (navigateur) vers une utilisation professionnelle via le Terminal (Claude CLI), en connectant l'IA à N8N via le protocole MCP pour générer des revenus passifs automatisés.</td></tr>
-        </table>
-      </section>
-
-      <!-- PARTIE 1 -->
-      <section id="part1" class="card section">
-        <h2>PARTIE 1 — Concepts clés et définitions</h2>
-
-        <h3>1.1 — Concepts Business</h3>
-        <table>
-          <tr><th>Concept</th><th>Définition</th></tr>
-          <tr><td>SMMIA</td><td>Fusion du SMMA traditionnel (vente de services) et de l'IA. Objectif : vendre ET délivrer des services de manière totalement automatisée.</td></tr>
-          <tr><td>Revenu Passif IA</td><td>Transition d'un modèle manuel vers des systèmes automatisés qui génèrent des revenus avec intervention minimale.</td></tr>
-          <tr><td>Génération de Leads Automatisée</td><td>Système de prospection qui identifie des cibles (ex : plombiers sans site web) via scraping et les contacte automatiquement.</td></tr>
-        </table>
-
-        <h3>1.2 — Concepts Techniques IA</h3>
-        <table>
-          <tr><th>Concept</th><th>Définition</th></tr>
-          <tr><td>Claude CLI</td><td>Utilisation de Claude via le terminal. Plus performant que via le navigateur car connexion directe « Processeur ↔ IA ».</td></tr>
-          <tr><td>Open Claw</td><td>Assistant IA sur téléphone (WhatsApp/Discord/Telegram) pour piloter son ordinateur à distance.</td></tr>
-          <tr><td>Skills</td><td>Instructions ou mémoires personnalisées pour rendre l'IA experte d'une tâche.</td></tr>
-          <tr><td>Hallucination</td><td>Phénomène où l'IA invente réponses/solutions inexistantes (ex : nœuds N8N fictifs). Problème majeur résolu par MCP.</td></tr>
-        </table>
-
-        <h3>1.3 — Concepts Automatisation (N8N)</h3>
-        <table>
-          <tr><th>Concept</th><th>Définition</th></tr>
-          <tr><td>N8N</td><td>Plateforme d'automatisation (no-code/low-code) pour créer des workflows. Large écosystème de nœuds.</td></tr>
-          <tr><td>Noeuds (Nodes)</td><td>Blocs d'actions (envoyer email, scraper, poster, appeler API…).</td></tr>
-          <tr><td>Trigger</td><td>Événement déclencheur (paiement, nouvel email, horaire).</td></tr>
-          <tr><td>MCP (Model Context Protocol)</td><td>Connecteur qui donne à Claude la connaissance parfaite des nœuds N8N pour éviter hallucinations.</td></tr>
-        </table>
-      </section>
-
-      <!-- PARTIE 2 -->
-      <section id="part2" class="card section">
-        <h2>PARTIE 2 — Outils et technologies mentionnés</h2>
-        <table>
-          <tr><th>Catégorie</th><th>Outil / Plateforme</th></tr>
-          <tr><td>IA</td><td>Claude (CLI, MCP), Gemini</td></tr>
-          <tr><td>Automatisation</td><td>N8N + protocole MCP</td></tr>
-          <tr><td>Dev & Déploiement</td><td>Terminal (CLI), GitHub, Vercel, HTML</td></tr>
-          <tr><td>Prospection & Données</td><td>Outscraper, Google Maps, Pages Jaunes</td></tr>
-          <tr><td>E-commerce</td><td>Shopify (API Shopify Partner)</td></tr>
-          <tr><td>Infra</td><td>VPS (10–15 €/mois)</td></tr>
-          <tr><td>Transcription</td><td>Whisper</td></tr>
-          <tr><td>Communications</td><td>Discord (groupe « Focus »)</td></tr>
-          <tr><td>Formats</td><td>JSON, HTML</td></tr>
-        </table>
-      </section>
-
-      <!-- PARTIE 3 -->
-      <section id="part3" class="card section">
-        <h2>PARTIE 3 — Le « BANGER » : Business Plan détaillé</h2>
-        <p>Présentation principale : Workflow N8N entièrement automatisé pour vendre des sites web en volume à des artisans (ex : plombiers).</p>
-
-        <h3>Étape 1 — Identification des prospects — Scraping</h3>
-        <ul>
-          <li>Outil : Outscraper (API)</li>
-          <li>Source : Google Maps</li>
-          <li>Cible : entreprises avec fiche GMB MAIS sans site web</li>
-          <li>Filtre : entreprises SANS site web (ex : plombiers à Paris — 20 prospects en demo)</li>
-        </ul>
-
-        <h3>Étape 2 — Création du site vitrine automatique</h3>
-        <ul>
-          <li>IA : Claude ou Gemini génère une landing page HTML moderne et personnalisée</li>
-          <li>Injection automatique des coordonnées réelles du prospect</li>
-        </ul>
-
-        <h3>Étape 3 — Déploiement</h3>
-        <ol>
-          <li>Envoyer le code HTML sur GitHub (push automatique)</li>
-          <li>Déployer sur Vercel → URL créée automatiquement</li>
-          <li>Résultat : maquette en ligne prête à montrer</li>
-        </ol>
-
-        <h3>Étape 4 — Prospection automatisée — Cold Email</h3>
-        <ul>
-          <li>Email personnalisé envoyé automatiquement au prospect</li>
-          <li>Inclure le lien de la maquette + proposition commerciale (200 €)</li>
-          <li>Conseil anti-spam : utiliser une boîte mail personnelle connectée au workflow</li>
-        </ul>
-
-        <h3>Schéma synthétique du workflow</h3>
-        <pre>
-Outscraper (Google Maps)
-      ▼
-Claude / Gemini (Génération HTML)
-      ▼
-GitHub → Vercel (URL en ligne)
-      ▼
-Cold Email auto (lien démo)
-      ▼
-Vente (200 € par site)
-        </pre>
-      </section>
-
-      <!-- PARTIE 4 -->
-      <section id="part4" class="card section">
-        <h2>PARTIE 4 — Données chiffrées clés</h2>
-
-        <table>
-          <tr><th>Donnée</th><th>Valeur</th></tr>
-          <tr><td>Prix vente d'un site vitrine</td><td>200 €</td></tr>
-          <tr><td>Prix facture avec système de réservation</td><td>1 200 €</td></tr>
-          <tr><td>Coût VPS (mensuel)</td><td>10–15 €/mois</td></tr>
-          <tr><td>Forfait Claude recommandé</td><td>80 €</td></tr>
-          <tr><td>Forfait Claude avancé</td><td>200 €</td></tr>
-          <tr><td>Revenu généré (ex. USA)</td><td>2 000 $</td></tr>
-        </table>
-
-        <h3>Statistiques techniques N8N & IA</h3>
-        <table>
-          <tr><th>Donnée</th><th>Valeur</th></tr>
-          <tr><td>Noeuds N8N maîtrisés via MCP</td><td>1 286</td></tr>
-          <tr><td>Total noeuds N8N</td><td>+1 200</td></tr>
-          <tr><td>Étoiles GitHub de N8N (2026)</td><td>70 000</td></tr>
-          <tr><td>Utilisateurs actifs N8N</td><td>200 000</td></tr>
-          <tr><td>Taux de couverture MCP</td><td>99 %</td></tr>
-          <tr><td>Hallucinations avec MCP</td><td>0</td></tr>
-          <tr><td>Temps création workflow AVEC MCP</td><td>3 minutes</td></tr>
-          <tr><td>Temps création workflow SANS MCP</td><td>45 minutes</td></tr>
-          <tr><td>Utilisation IA par membres</td><td>20–25 % du potentiel</td></tr>
-          <tr><td>Nombre prospects demo</td><td>20 plombiers à Paris</td></tr>
-        </table>
-
-        <h3>Données session</h3>
-        <table>
-          <tr><th>Donnée</th><th>Valeur</th></tr>
-          <tr><td>Retard du live</td><td>17 minutes</td></tr>
-          <tr><td>Participants présents</td><td>122–130</td></tr>
-          <tr><td>Durée prévue</td><td>1 heure</td></tr>
-          <tr><td>Outils MCP chargés en demo</td><td>3</td></tr>
-          <tr><td>Semaines depuis début formation</td><td>2</td></tr>
-          <tr><td>Temps de trajet cité (anecdote VPS)</td><td>3 heures</td></tr>
-        </table>
-      </section>
-
-      <!-- PARTIE 5 -->
-      <section id="part5" class="card section">
-        <h2>PARTIE 5 — Erreurs à éviter et points d'attention</h2>
-
-        <h3>Erreurs techniques</h3>
-        <ul>
-          <li>Ne pas utiliser l'IA via navigateur pour tâches complexes — utiliser CLI.</li>
-          <li>Ne pas travailler sans MCP — risque d'hallucinations (sans MCP = 45 min, avec MCP = 3 min).</li>
-          <li>Ne pas négliger le VPS — automatisations arrêtent si PC éteint.</li>
-        </ul>
-
-        <h3>Erreurs de prospection</h3>
-        <ul>
-          <li>Mal filtrer les données Outscraper — cibler uniquement entreprises SANS site web.</li>
-          <li>Mal configurer accès API — donner les accès à Claude pour configurer (GitHub, Vercel…).</li>
-          <li>Utiliser service d'envoi générique → risk spam ; utiliser boîte personnelle liée au workflow.</li>
-        </ul>
-
-        <h3>Erreurs d'apprentissage & navigation</h3>
-        <ul>
-          <li>Essayer d'apprendre toute la doc N8N manuellement — préférer config pilotée par IA.</li>
-          <li>Ne pas voir canaux Discord — cliquer sur « Afficher tous les salons »</li>
-        </ul>
-      </section>
-
-      <!-- PARTIE 6 -->
-      <section id="part6" class="card section">
-        <h2>PARTIE 6 — Actions à mettre en place</h2>
-
-        <h3>Actions Techniques</h3>
-        <table>
-          <tr><th>#</th><th>Action</th><th>Détail</th></tr>
-          <tr><td>1</td><td>Passer au Terminal (Claude CLI)</td><td>Désinstaller l'habitude du navigateur pour tâches IA complexes.</td></tr>
-          <tr><td>2</td><td>Installer le MCP N8N</td><td>Relier Claude à N8N via le protocole Model Context Protocol.</td></tr>
-          <tr><td>3</td><td>Configurer un VPS</td><td>10–15 €/mois pour agents 24/7.</td></tr>
-          <tr><td>4</td><td>Créer des « Skills » personnalisés</td><td>Ex : facturation, design Mobile First, UI/UX…</td></tr>
-          <tr><td>5</td><td>Connecter ses comptes</td><td>GitHub, Vercel, Gmail → à Claude pour automatiser déploiement.</td></tr>
-        </table>
-
-        <h3>Actions Business (à reproduire)</h3>
-        <table>
-          <tr><th>#</th><th>Action</th><th>Détail</th></tr>
-          <tr><td>1</td><td>Lancer le workflow « Plombiers »</td><td>Outscraper → extraire plombiers Paris sans site → laisser tourner.</td></tr>
-          <tr><td>2</td><td>Tester génération landing page</td><td>Via Claude en HTML, utiliser coordonnées réelles.</td></tr>
-          <tr><td>3</td><td>Déployer sur Vercel via GitHub</td><td>Automatiser push et création d'URL.</td></tr>
-          <tr><td>4</td><td>Envoyer premiers cold emails</td><td>Automatisés avec démo personnalisée.</td></tr>
-          <tr><td>5</td><td>Naviguer dans Discord</td><td>Activer affichage de tous les canaux (SMMA, E-commerce, Fiscalité).</td></tr>
-        </table>
-      </section>
-
-      <!-- PARTIE 7 -->
-      <section id="part7" class="card section">
-        <h2>PARTIE 7 — Autres exemples concrets mentionnés</h2>
-
-        <ul>
-          <li>Cas « Pages Jaunes » — opportunité commerciale reçue dès le lendemain de la mise en place.</li>
-          <li>Réponse automatique aux avis clients — service vendable via N8N.</li>
-          <li>Intégration Shopify — automatisation gestion commandes/stocks via API.</li>
-          <li>Open Claw en déplacement — pilotage de VPS via WhatsApp/Discord pendant trajet.</li>
-          <li>Génération de facture par skill — facture professionnelle 1 200 € générée par commande vocale.</li>
-        </ul>
-      </section>
-
-      <!-- RECAPITULATIF -->
-      <section id="recap" class="card section">
-        <h2>RÉCAPITULATIF — Points essentiels à retenir</h2>
-        <ol>
-          <li>Navigateur → Terminal : gain de puissance immédiat pour l'IA.</li>
-          <li>N8N + MCP : zéro hallucination, workflow en 3 minutes vs 45 min.</li>
-          <li>Workflow « Plombiers » : scraping + génération HTML + déploiement + cold email → 200 € par site.</li>
-          <li>Skills : l'IA devient experte et reproduit la tâche fidèlement.</li>
-          <li>VPS : agents qui travaillent pendant que tu dors — 10 à 15 €/mois.</li>
-          <li>Discord : activer tous les canaux pour accéder aux ressources.</li>
-        </ol>
-
-        <p class="muted">Note : certaines étapes techniques (lignes de code, commandes d'installation du MCP, configuration VPS) ne sont pas détaillées dans la transcription ; elles sont traitées dans des modules spécifiques du Discord.</p>
-      </section>
-
-      <!-- ACTIONS RAPIDES / NOTES SOURCE -->
-      <section id="actions" class="card section">
-        <h2>Fichiers & actions recommandés pour GitHub</h2>
-        <p class="muted">Idées de fichiers à ajouter à ton repo pour que toutes les notes soient disponibles sur GitHub :</p>
-        <ul>
-          <li>index.html (cette page)</li>
-          <li>styles.css (si tu veux externaliser le CSS)</li>
-          <li>NOTES_SOURCE.txt ou .md (transcription brute)</li>
-          <li>README.md (instructions & licence)</li>
-          <li>publish_help.sh (script exemple pour initialiser repo & GitHub Pages)</li>
-        </ul>
-
-        <h3>Commande d'exemple pour publier (bash)</h3>
-        <pre>
-# Exemple rapide (déjà dans publish_help.sh)
-git init
-git add .
-git commit -m "Ajout notes SMMIA - site statique"
-git branch -M main
-git remote add origin https://github.com/TON_COMPTE/TON_REPO.git
-git push -u origin main
-# Activer GitHub Pages : settings → Pages → source : main / docs ou main root selon config
-        </pre>
-      </section>
-    </div>
-
-    <!-- ASIDE -->
-    <aside class="aside">
-      <div class="card">
-        <h3>Résumé rapide</h3>
-        <p class="muted">Objectif principal : automatiser prospection → génération site → déploiement → cold email → vente, en utilisant Claude (CLI + MCP) et N8N. KPI clés : 200 € / site, VPS 10–15 €/mois, workflow 3 min avec MCP.</p>
-
-        <h3>Ressources & outils</h3>
-        <p class="muted">Claude CLI / MCP, N8N, Outscraper, GitHub, Vercel, VPS, Whisper, Discord.</p>
-
-        <h3>Actions immédiates</h3>
-        <ol>
-          <li>Copier ce index.html dans ton repo</li>
-          <li>Ajouter NOTES_SOURCE.txt (transcription brute)</li>
-          <li>Commit & push → activer GitHub Pages</li>
-        </ol>
+  <!-- HERO -->
+  <section class="hero-bg" aria-label="Intro / Hero">
+    <div class="hero">
+      <div class="top-meta" aria-hidden="true">
+        <span class="kicker">Live Coaching — Groupe Focus</span>
+        <span class="muted">Session SMMIA</span>
       </div>
-    </aside>
-  </div>
-</main>
 
-<button id="backTop" title="Haut de page">↑</button>
+      <h1>
+        Créer ton agence SMMA, <br>
+        <span class="highlight">générer des flyers pro avec l’IA</span> <br>
+        et vendre tes services dès demain
+      </h1>
+
+      <p class="lead">Notes de cours complètes du live de Jamel — De la création de flyers professionnels avec l'IA à la vente de services digitaux, en passant par la prospection terrain et en ligne.</p>
+
+      <div class="hero-card" role="note" aria-label="Dédicace">
+        <strong>🔥 SPÉCIALE DÉDICACE À GOKU</strong>
+        <blockquote>« Au début, on ne va pas être à l'aise, c'est normal. »</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main layout: sidebar + content -->
+  <div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" aria-label="Table des matières">
+      <nav>
+        <a href="#part1" class="active">PARTIE 1 — Intro & Process</a>
+        <a href="#part2">PARTIE 2 — Design</a>
+        <a href="#part3">PARTIE 3 — Services</a>
+        <a href="#part4">PARTIE 4 — Outils</a>
+        <a href="#part5">PARTIE 5 — Prospection</a>
+        <a href="#part6">PARTIE 6 — Vente</a>
+        <a href="#part7">PARTIE 7 — Mindset</a>
+        <a href="#recap">RÉCAPITULATIF</a>
+      </nav>
+    </aside>
+
+    <!-- Content -->
+    <main>
+      <section id="part1" class="section" aria-labelledby="part1-title">
+        <h2 id="part1-title">PARTIE 1 — Intro & Process</h2>
+        <p class="muted">Résumé synthétique et étapes clés extraites du PDF. Remplace ce paragraphe par tes notes complètes.</p>
+        <ul>
+          <li>Étape 1 — Objectifs & Positionnement</li>
+          <li>Étape 2 — Offre & Prix</li>
+          <li>Étape 3 — Prospection & Pitch</li>
+        </ul>
+      </section>
+
+      <section id="part2" class="section" aria-labelledby="part2-title">
+        <h2 id="part2-title">PARTIE 2 — Design</h2>
+        <p class="muted">Principes de création de flyers, templates IA et bonnes pratiques.</p>
+      </section>
+
+      <section id="part3" class="section" aria-labelledby="part3-title">
+        <h2 id="part3-title">PARTIE 3 — Services</h2>
+        <p class="muted">Catalogues de services, upsells, packages et exemples de scripts.</p>
+      </section>
+
+      <section id="part4" class="section" aria-labelledby="part4-title">
+        <h2 id="part4-title">PARTIE 4 — Outils</h2>
+        <p class="muted">Liste d'outils IA et outils de productivité recommandés.</p>
+      </section>
+
+      <section id="part5" class="section" aria-labelledby="part5-title">
+        <h2 id="part5-title">PARTIE 5 — Prospection</h2>
+        <p class="muted">Techniques terrain, messages types, objection handling.</p>
+      </section>
+
+      <section id="part6" class="section" aria-labelledby="part6-title">
+        <h2 id="part6-title">PARTIE 6 — Vente</h2>
+        <p class="muted">Processus de closing, scripts et follow-up.</p>
+      </section>
+
+      <section id="part7" class="section" aria-labelledby="part7-title">
+        <h2 id="part7-title">PARTIE 7 — Mindset & Checklist</h2>
+        <p class="muted">Routines, état d'esprit et checklist opérationnelle.</p>
+      </section>
+
+      <section id="recap" class="section" aria-labelledby="recap-title">
+        <h2 id="recap-title">RÉCAPITULATIF</h2>
+        <p class="muted">Récapitulatif global et actions immédiates à mettre en place.</p>
+      </section>
+    </main>
+
+  </div> <!-- /layout -->
+</div> <!-- /container -->
+
+<button id="backTop" title="Haut de page" aria-label="Haut de page">↑</button>
 
 <script>
-  // Smooth scroll and active link highlight
-  document.querySelectorAll('nav a').forEach(a=>{
-    a.addEventListener('click', (e)=>{
-      // allow default anchor but smooth scroll
-      e.preventDefault();
-      const id = a.getAttribute('href').slice(1);
+  // Smooth scrolling for header/nav and sidebar
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', function(e){
+      const href = this.getAttribute('href');
+      if(!href || href === '#') return;
+      const id = href.slice(1);
       const el = document.getElementById(id);
-      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-      // set active
-      document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));
-      a.classList.add('active');
+      if(el){
+        e.preventDefault();
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+        // update active links
+        document.querySelectorAll('.sidebar a, nav.top-nav a').forEach(x=>x.classList.remove('active'));
+        this.classList.add('active');
+      }
     });
   });
 
-  // highlight on scroll
-  const links = Array.from(document.querySelectorAll('nav a'));
+  // Highlight sidebar link on scroll
   const sections = Array.from(document.querySelectorAll('main .section'));
+  const links = Array.from(document.querySelectorAll('.sidebar a'));
   function onScroll(){
-    const offset = 120;
+    const offset = 140;
     let current = sections[0];
     for(const s of sections){
       if(s.getBoundingClientRect().top - offset <= 0){
         current = s;
       } else break;
     }
-    const id = '#' + current.id;
-    links.forEach(a => (a.getAttribute('href') === id) ? a.classList.add('active') : a.classList.remove('active'));
-    // back to top visibility
+    const id = current ? '#' + current.id : null;
+    links.forEach(a => {
+      if(a.getAttribute('href') === id) a.classList.add('active'); else a.classList.remove('active');
+    });
+    // backTop visibility
     const bt = document.getElementById('backTop');
     if(window.scrollY > 400) bt.style.display = 'block'; else bt.style.display = 'none';
   }
