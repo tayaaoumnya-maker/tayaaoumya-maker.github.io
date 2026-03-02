@@ -3,498 +3,185 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Notes : Automatisation Business avec l'IA — Structuration</title>
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
+<title>Notes — Design SaaS + contenu expert</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#070615;
-    --panel:#0e0b1a;
-    --card:#0f1724;
-    --muted:#9aa4bf;
-    --accent:#7C5CFF;
-    --accent-2:#6AE3FF;
-    --glow: 0 6px 30px rgba(124,92,255,0.12);
-    --border: rgba(255,255,255,0.04);
-    --card-border: linear-gradient(90deg, rgba(124,92,255,0.18), rgba(106,227,255,0.06));
-    --radius:12px;
-    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    color-scheme: dark;
+    --bg:#070615; --panel:#0e0b1a; --accent:#7C5CFF; --muted:#9aa4bf;
+    --card:#0f1724; --radius:10px; --glass: rgba(255,255,255,0.03);
   }
-  html,body{height:100%;margin:0;background:linear-gradient(180deg,#05030a 0%, #081025 100%);}
-  .app {
-    display:flex;
-    min-height:100vh;
-    gap:28px;
-    padding:28px;
-    box-sizing:border-box;
+  *{box-sizing:border-box} html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:#E6EDF3;background:linear-gradient(180deg,#05030a,#081025);}
+  /* Top navbar */
+  header{
+    position:sticky; top:0; z-index:60;
+    backdrop-filter: blur(6px);
+    background: linear-gradient(180deg, rgba(6,5,12,0.65), rgba(6,5,12,0.40));
+    border-bottom:1px solid rgba(255,255,255,0.04);
   }
-
-  /* Sidebar (TOC) */
-  .sidebar {
-    width:320px;
-    position:sticky;
-    top:28px;
-    height:calc(100vh - 56px);
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    border-radius:16px;
-    padding:20px;
-    box-shadow:var(--glow);
-    border:1px solid var(--border);
-    overflow:auto;
-    flex-shrink:0;
+  .nav{
+    max-width:1100px;margin:0 auto; display:flex; align-items:center; gap:18px;
+    padding:12px 20px;
   }
-  .brand{
-    display:flex;align-items:center;gap:12px;margin-bottom:14px;
+  .brand{font-weight:700; color:var(--accent); font-size:18px; letter-spacing:0.2px}
+  nav{margin-left:16px; display:flex; gap:10px; align-items:center; flex:1}
+  .nav a{
+    color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:8px; font-size:14px;
   }
-  .logo {
-    width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
-    box-shadow:0 6px 20px rgba(124,92,255,0.18);
-    display:flex;align-items:center;justify-content:center;font-weight:700;color:white;
-    font-family: "JetBrains Mono";
+  .nav a:hover{color:#fff; background:rgba(124,92,255,0.08)}
+  .nav a.active{color:#fff; background:linear-gradient(90deg, rgba(124,92,255,0.14), rgba(106,227,255,0.03)); box-shadow:0 6px 20px rgba(124,92,255,0.06); border:1px solid rgba(124,92,255,0.12)}
+  .cta{margin-left:auto}
+  .container{max-width:1100px;margin:26px auto;padding:0 20px; display:grid; grid-template-columns: 1fr; gap:18px}
+  .card{background:var(--card); border-radius:12px; padding:18px; border:1px solid rgba(255,255,255,0.03);}
+  h1{margin:0 0 6px 0; font-size:20px}
+  h2.section-title{margin:8px 0 12px 0}
+  .muted{color:var(--muted); font-size:13px}
+  /* small screens: hamburger */
+  .hamburger{display:none; margin-left:10px; background:transparent; border:none; color:var(--muted); font-size:20px}
+  @media(max-width:880px){
+    nav{display:none}
+    .hamburger{display:inline-flex}
+    header .nav.open{display:flex; flex-direction:column; gap:6px; padding:12px 20px}
+    .container{padding:12px}
   }
-  .brand h1{margin:0;font-size:14px;color:#fff;font-weight:700;}
-  .brand p{margin:0;font-size:12px;color:var(--muted);}
-
-  .toc {margin-top:12px;}
-  .toc h3{font-size:12px;color:var(--muted);margin:12px 0 8px;}
-  .toc a{
-    display:block;padding:10px;border-radius:8px;margin-bottom:8px;color:#dfe7ff;text-decoration:none;
-    background:linear-gradient(180deg, rgba(255,255,255,0.012), transparent);
-    border:1px solid rgba(255,255,255,0.02);font-size:13px;
-  }
-  .toc a small{display:block;font-size:11px;color:var(--muted);margin-top:4px;}
-
-  /* Main content */
-  .main {
-    flex:1;
-    max-width:980px;
-    min-width:0;
-  }
-  .header {
-    display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;
-  }
-  .header .title {
-    color:#ffffff;font-size:18px;font-weight:800;
-  }
-  .header .meta{color:var(--muted);font-size:13px;}
-
-  /* Card style */
-  .section {
-    margin-bottom:18px;
-  }
-  .card {
-    background:linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.008));
-    border-radius:var(--radius);
-    padding:18px;
-    border:1px solid var(--border);
-    box-shadow: var(--glow);
-    margin-bottom:12px;
-  }
-  .card .badge {
-    display:inline-block;padding:6px 10px;border-radius:999px;font-weight:700;
-    background:linear-gradient(90deg, rgba(124,92,255,0.16), rgba(106,227,255,0.06));
-    color:#fff;font-size:12px;margin-bottom:10px;
-    border:1px solid rgba(255,255,255,0.03);
-  }
-  h2.section-title{margin:0 0 10px 0;color:#e9efff;font-size:16px;}
-  h3.card-title{margin:0 0 8px 0;color:#fff;font-size:14px;}
-  p, li {color: #cfd9ff;font-size:13px;line-height:1.45;margin:8px 0;}
-  .muted{color:var(--muted);font-size:13px;}
-  ul{padding-left:18px;margin:8px 0;}
-  pre{background:rgba(0,0,0,0.25);padding:14px;border-radius:8px;font-family:"JetBrains Mono",monospace;color:#e9f2ff;overflow:auto;border:1px solid rgba(255,255,255,0.02)}
-  code{background:rgba(255,255,255,0.02);padding:4px 6px;border-radius:6px;font-family:"JetBrains Mono", monospace;color:#dfefff;font-size:12px;}
-
-  /* small helper components */
-  .row {display:flex;gap:12px;flex-wrap:wrap;}
-  .chip {padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02);color:var(--muted);font-size:13px;}
-  .grid {display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px;}
-  .node {
-    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.008));
-    border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,0.02);font-size:13px;color:#e7f0ff;
-  }
-
-  /* Footer small */
-  .footer-note {color:var(--muted);font-size:13px;margin-top:18px;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);background:linear-gradient(180deg, rgba(255,255,255,0.006), transparent);}
-
-  /* Responsive */
-  @media (max-width:980px){
-    .app{flex-direction:column;padding:18px;}
-    .sidebar{width:100%;position:relative;height:auto;top:unset;}
-    .main{max-width:100%}
-    .grid{grid-template-columns:repeat(2,1fr);}
-  }
-  @media (max-width:640px){
-    .grid{grid-template-columns:repeat(1,1fr);}
-    .sidebar{padding:12px;}
-  }
-
-  /* link highlight */
-  .toc a.active{outline:2px solid rgba(124,92,255,0.14);box-shadow:0 8px 30px rgba(124,92,255,0.06);}
+  /* section spacing and anchors */
+  section{scroll-margin-top:80px}
+  .toc-inline{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px}
+  .toc-inline a{font-size:13px}
 </style>
 </head>
 <body>
-<div class="app">
-  <aside class="sidebar" aria-label="Table des matières">
-    <div class="brand">
-      <div class="logo">AI</div>
-      <div>
-        <h1>Automatisation Business — IA</h1>
-        <p>Notes structurées • Live Formation</p>
-      </div>
+
+<header>
+  <div class="nav">
+    <div class="brand">Design SaaS • Notes</div>
+
+    <nav id="topnav" aria-label="Table des matières">
+      <a href="#intro">Intro</a>
+      <a href="#chap1">Chapitre 1</a>
+      <a href="#chap2">Chapitre 2</a>
+      <a href="#resume">Résumé</a>
+      <a href="#points">Points clés</a>
+      <a href="#resources">Ressources</a>
+    </nav>
+
+    <button class="hamburger" id="hambtn" aria-label="Menu">☰</button>
+
+    <div class="cta muted" style="font-size:13px">Publié — GitHub Pages</div>
+  </div>
+</header>
+
+<main class="container">
+  <!-- Intro -->
+  <section id="intro" class="card section">
+    <h1>📚 Introduction</h1>
+    <div class="muted">Contexte & objectifs</div>
+    <p style="margin-top:10px">Ici tu expliques la vision du document : "Design SaaS + contenu expert" — objectif, audience, ton, et comment utiliser ces notes.</p>
+    <div class="toc-inline">
+      <strong>Chapitres :</strong>
+      <a href="#chap1">Chapitre 1</a>
+      <a href="#chap2">Chapitre 2</a>
     </div>
+  </section>
 
-    <div class="toc">
-      <h3>Table des matières</h3>
-      <a href="#intro">Introduction <small>Contexte, objectif, concept SMMIA</small></a>
-      <a href="#concepts">Concepts Techniques Fondamentaux <small>IA navigateur, terminal, Claude CLI...</small></a>
-      <a href="#tools">Outils & Écosystème <small>N8N, MCP, Outcraper, VPS...</small></a>
-      <a href="#procedures">Procédures d'installation <small>Claude CLI, MCP N8N, récupération API</small></a>
-      <a href="#business">Business Plan & Prospection <small>Workflow plombiers</small></a>
-      <a href="#cas">Cas d'usage & Résultats <small>Exemples concrets</small></a>
-      <a href="#conclusion">Conclusion & Prochaines étapes</a>
-    </div>
+  <!-- Chapitre 1 -->
+  <section id="chap1" class="card section">
+    <h2 class="section-title">Chapitre 1 — Stratégie Produit</h2>
+    <p class="muted">Thèmes : positionnement, proposition de valeur, pricing</p>
+    <ul>
+      <li>Positionnement clair et unique</li>
+      <li>Modèles de pricing (freemium, subscription tiers)</li>
+      <li>Métriques à suivre : MRR, churn, LTV, CAC</li>
+    </ul>
+  </section>
 
-    <div style="height:14px"></div>
-    <div class="footer-note">
-      ⚠ Toutes les informations proviennent strictement du contenu du cours. Replays et docs disponibles dans l'espace formation.
-    </div>
-  </aside>
+  <!-- Chapitre 2 -->
+  <section id="chap2" class="card section">
+    <h2 class="section-title">Chapitre 2 — Design & UI</h2>
+    <p class="muted">Thèmes : pattern library, onboarding, rétention</p>
+    <ol>
+      <li>Systèmes de design : tokens, composants réutilisables</li>
+      <li>Onboarding contextualisé — premiers 7 jours</li>
+      <li>Tests et AB testing des flows</li>
+    </ol>
+  </section>
 
-  <main class="main">
-    <div class="header">
-      <div>
-        <div class="title">Automatisation Business avec l'IA — Notes de Cours</div>
-        <div class="meta">Structure fidèle au live — format "cards" pour chaque idée</div>
-      </div>
-      <div class="muted">Design sombre • Cards • TOC</div>
-    </div>
+  <!-- Résumé -->
+  <section id="resume" class="card section">
+    <h2 class="section-title">Résumé</h2>
+    <p>Points synthétiques et next-steps actionnables.</p>
+    <ul>
+      <li>Prioriser la valeur utilisateur avant les features.</li>
+      <li>Mesurer les KPIs product-market fit.</li>
+    </ul>
+  </section>
 
-    <!-- INTRO -->
-    <section id="intro" class="section">
-      <div class="card">
-        <span class="badge">Introduction</span>
-        <h2 class="section-title">Contexte & Objectifs</h2>
-        <h3 class="card-title">Contexte</h3>
-        <p>Live de formation sur l'automatisation business utilisant l'intelligence artificielle.</p>
+  <!-- Points clés -->
+  <section id="points" class="card section">
+    <h2 class="section-title">Points clés</h2>
+    <p class="muted">Checklist rapide</p>
+    <ul>
+      <li>Map des personas</li>
+      <li>Roadmap 90 jours</li>
+      <li>Processus de feedback</li>
+    </ul>
+  </section>
 
-        <h3 class="card-title">Objectif principal</h3>
-        <p>Comprendre l'automatisation et générer des revenus ("faire de l'oseille").</p>
+  <!-- Ressources -->
+  <section id="resources" class="card section">
+    <h2 class="section-title">Ressources</h2>
+    <p class="muted">Liens & fichiers</p>
+    <ul>
+      <li>Replays, docs, templates</li>
+      <li>Export PDF / assets pour hébergement</li>
+    </ul>
+  </section>
 
-        <h3 class="card-title">Concept clé</h3>
-        <p><strong>SMMIA</strong> (Social Media Marketing Intelligence Artificielle) = combinaison entre la vente de services (SMMA) et l'intelligence artificielle pour automatiser la prestation de services.</p>
+  <div style="height:30px"></div>
+  <div class="muted" style="text-align:center">Besoin de sections supplémentaires ? Dis-moi lesquelles et je les ajoute.</div>
+</main>
 
-        <h3 class="card-title">Philosophie du cours</h3>
-        <p>"L'objectif c'est que vos agents bossent pour vous. Vous êtes à la chicha, vous savez que derrière ça fait rentrer de l'oseille"</p>
-      </div>
-    </section>
-
-    <!-- CONCEPTS -->
-    <section id="concepts" class="section">
-      <h2 class="section-title">Concepts Techniques Fondamentaux</h2>
-
-      <div class="card">
-        <span class="badge">1. IA sur Navigateur vs Terminal</span>
-        <h3 class="card-title">Comparaison</h3>
-        <p class="muted">Tableau résumé :</p>
-        <ul>
-          <li><strong>Navigateur</strong> : performance bridée, ressources partagées, contexte fenêtre limité (onglets ouverts).</li>
-          <li><strong>Terminal</strong> : performance boostée, connexion directe au processeur, aucune limitation de contexte.</li>
-        </ul>
-        <p>Analogie : moteur thermique (lent) vs moteur électrique (instantané). Principe : "Quand vous passez sur le terminal, l'IA c'est processeur IA."</p>
-      </div>
-
-      <div class="card">
-        <span class="badge">2. Claude CLI</span>
-        <h3 class="card-title">Définition & Avantage</h3>
-        <p>Version de l'IA Claude exécutée directement dans le terminal. Plus puissant que l'utilisation via navigateur et permet de créer sections Shopify, automatisations, etc.</p>
-
-        <h3 class="card-title">Installation Windows (résumé)</h3>
-        <ul>
-          <li>Installer Node.js</li>
-          <li>Installer Git</li>
-          <li>Installer Claude CLI</li>
-          <li>Documentation disponible dans l'espace replay</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <span class="badge">3. Open CL</span>
-        <h3 class="card-title">Caractéristiques</h3>
-        <p>Assistant IA accessible depuis mobile (WhatsApp, Discord, Telegram) avec accès en temps réel à tout l'ordinateur et aux skills/agents configurés.</p>
-        <p><strong>Exemple concret</strong> : "Je suis en closing... 'S'il te plaît Tasha, fais-moi une facture de 1200 € pour un site vitrine plus un système de réservation.' Il le fait, j'ai directement tout sur mon téléphone."</p>
-        <p><strong>Pré-requis</strong> : l'ordinateur doit rester allumé (solution recommandée : VPS).</p>
-      </div>
-
-      <div class="card">
-        <span class="badge">4. VPS (Virtual Private Server)</span>
-        <h3 class="card-title">Définition & Coût</h3>
-        <p>Ordinateur virtuel loué à distance. Coût typique : 10–15€ par mois. Avantage : reste allumé 24h/24, permet de faire tourner les automatisations. Alternative : ordinateur physique qui reste allumé.</p>
-      </div>
-
-      <div class="card">
-        <span class="badge">5. Skills (Compétences IA)</span>
-        <h3 class="card-title">Définition & Méthode</h3>
-        <p>Instructions spécialisées mémorisées par l'IA pour effectuer des tâches précises.</p>
-        <p>Types mentionnés : Mobile First (sites responsive), Front-end Design, UI/UX, Facture (génération automatique).</p>
-        <h4 class="muted">Méthode de création</h4>
-        <ol>
-          <li>Réaliser la tâche complète avec l'IA (ex : créer une facture de A à Z).</li>
-          <li>Donner l'instruction : "Maintenant je veux que à chaque fois que je te demande une facture, tu me refais exactement la même facture en modifiant selon mes variables".</li>
-          <li>L'IA crée automatiquement le skill.</li>
-        </ol>
-      </div>
-
-      <div class="card">
-        <span class="badge">6. N8N - Outil d'automatisation</span>
-        <h3 class="card-title">Présentation</h3>
-        <p>N8N = tableau blanc où on connecte des blocs entre eux pour créer des workflows automatisés.</p>
-        <p class="muted">Chiffres clés :</p>
-        <ul>
-          <li>70 000 étoiles GitHub</li>
-          <li>Plus de 200 000 utilisateurs actifs</li>
-          <li>1286 nodes disponibles</li>
-        </ul>
-
-        <h4 class="muted">Architecture / concepts</h4>
-        <ul>
-          <li><strong>Trigger</strong> : événement qui lance le workflow (ex: horaire, mail reçu, nouvelle commande Shopify).</li>
-          <li><strong>Node</strong> : bloc d'action (envoyer mail, scraper, poster sur réseaux, appeler API).</li>
-          <li><strong>Workflow</strong> : enchaînement d'actions automatisées.</li>
-        </ul>
-
-        <h4 class="muted">Comparaison concurrents</h4>
-        <div class="grid" style="margin-top:10px;">
-          <div class="node"><strong>N8N</strong><div class="muted">Open source • Plus flexible</div></div>
-          <div class="node"><strong>Make</strong><div class="muted">SaaS • Payant</div></div>
-          <div class="node"><strong>Zapier</strong><div class="muted">SaaS • Similaire à Make</div></div>
-        </div>
-      </div>
-
-      <div class="card">
-        <span class="badge">7. MCP (Model Context Protocol)</span>
-        <h3 class="card-title">Fonction & Exemple</h3>
-        <p>Définition simple : "Une prise, un connecteur". Transforme Claude en expert instantané d'un outil spécifique (ex : MCP N8N fait connaître les 1286 nodes à l'IA).</p>
-
-        <h4 class="muted">Avant / Après MCP (résumé)</h4>
-        <ul>
-          <li>Apprentissage : avant → lire la doc ; avec MCP → aucun apprentissage nécessaire.</li>
-          <li>Erreurs (hallucinations) : avant → fréquentes ; avec MCP → quasi zéro.</li>
-          <li>Temps de création : avant → ~45 minutes ; avec MCP → ~3 minutes.</li>
-          <li>Couverture : avec MCP → 99% des propriétés.</li>
-        </ul>
-
-        <p class="muted">Autres MCP disponibles : MCP Notion (envoi automatique de projets vers Notion), et d'autres pour de nombreux outils.</p>
-      </div>
-
-    </section>
-
-    <!-- ECOSYSTEME OUTILS -->
-    <section id="tools" class="section">
-      <h2 class="section-title">Écosystème d'outils complémentaires</h2>
-
-      <div class="card">
-        <span class="badge">Outils mentionnés</span>
-        <div class="row" style="margin-top:8px;">
-          <div class="chip">Outcraper — scraping fiches Google My Business</div>
-          <div class="chip">GitHub — hébergement & versioning</div>
-          <div class="chip">Vercel — déploiement automatique</div>
-        </div>
-        <div class="row" style="margin-top:8px;">
-          <div class="chip">Shopify API — via Shopify Partner</div>
-          <div class="chip">Whisper — transcription audio→texte</div>
-          <div class="chip">Gmail — intégration pour envoi d'emails</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <span class="badge">Utilisation N8N avec Claude</span>
-        <h3 class="card-title">Workflow résumé</h3>
-        <ol>
-          <li>Décrire l'automatisation souhaitée à Claude (vocal ou texte).</li>
-          <li>Claude génère le workflow JSON.</li>
-          <li>Importer le workflow dans N8N.</li>
-          <li>Lancer (Start).</li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- PROCEDURES -->
-    <section id="procedures" class="section">
-      <h2 class="section-title">Procédures d'installation et configuration</h2>
-
-      <div class="card">
-        <span class="badge">Installation Claude CLI (Windows)</span>
-        <ol>
-          <li>Installer Node.js</li>
-          <li>Installer Git</li>
-          <li>Installer Claude CLI</li>
-          <li>Consulter le replay pour le guide détaillé</li>
-        </ol>
-      </div>
-
-      <div class="card">
-        <span class="badge">Installation MCP N8N</span>
-        <p>Commande simple : dire à Claude "Installe-moi le MCP N8N". Résultat : Claude devient automatiquement expert N8N.</p>
-        <p>Recommandation : "Installez le MCP N8N complet, il va tout vous faire".</p>
-      </div>
-
-      <div class="card">
-        <span class="badge">Création de skills personnalisés</span>
-        <ol>
-          <li>Réaliser la tâche complète avec l'IA.</li>
-          <li>Donner l'instruction pour la mémorisation du pattern (variables).</li>
-          <li>L'IA mémorise automatiquement le skill.</li>
-        </ol>
-      </div>
-
-      <div class="card">
-        <span class="badge">Récupération API Shopify</span>
-        <ol>
-          <li>Créer un compte Shopify Partner.</li>
-          <li>Demander l'API de sa boutique via l'interface partenaire.</li>
-          <li>Obtenir le contrôle total (API admin).</li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- BUSINESS PLAN -->
-    <section id="business" class="section">
-      <h2 class="section-title">Business Plan : Prospection Automatisée</h2>
-
-      <div class="card">
-        <span class="badge">Cas d'étude : Sites vitrines pour plombiers</span>
-        <h3 class="card-title">Principe</h3>
-        <p>Identifier des artisans sans site web, créer automatiquement un site personnalisé, et les démarcher avec la maquette prête.</p>
-
-        <h4 class="muted">Workflow complet (7 étapes)</h4>
-        <ol>
-          <li><strong>Configuration du filtre</strong> : critère recherche "Plombier Paris", limite 20 prospects.</li>
-          <li><strong>Scraping</strong> : Outcraper → extraire fiches Google My Business (filtre : fiche GMB existe MAIS pas de site internet). Données récupérées : nom, adresse, email.</li>
-          <li><strong>Génération du site</strong> : envoyer les données à Claude/Gemini via API. Prompt : "Génère un site vitrine HTML complet et moderne pour un plombier" — personnalisation automatique (nom, adresse, coordonnées).</li>
-          <li><strong>Hébergement sur GitHub</strong> : code HTML enregistré automatiquement dans un repository.</li>
-          <li><strong>Déploiement sur Vercel</strong> : push automatique → URL de prévisualisation fonctionnelle.</li>
-          <li><strong>Rédaction email de prospection</strong> : composition automatique d'un mail personnalisé (ex : proposition à 200€ avec lien maquette).</li>
-          <li><strong>Envoi automatique</strong> : via intégration Gmail dans N8N. Utiliser boîte email personnelle pour éviter les spams.</li>
-        </ol>
-      </div>
-
-      <div class="card">
-        <span class="badge">Résultats concrets</span>
-        <ul>
-          <li>✅ Cas 1 : Personne contactée par Pages Jaunes dès le lendemain pour référencement prioritaire.</li>
-          <li>✅ Cas 2 : Entrepreneur américain générant 2 000$ avec cette méthode (Twitter).</li>
-          <li>✅ Validation : Le formateur a prédit la viralisation avant celle-ci aux États‑Unis.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- CAS D'USAGE -->
-    <section id="cas" class="section">
-      <h2 class="section-title">Cas d'Usage Concrets</h2>
-
-      <div class="card">
-        <span class="badge">Applications réussies</span>
-        <ul>
-          <li>Création de sections Shopify : utilisation de Claude pour coder des éléments e‑commerce.</li>
-          <li>Designs avec Gemini : génération d'éléments visuels et graphiques.</li>
-          <li>Assistant de closing mobile : générer une facture de 1200€ pendant un rendez‑vous client.</li>
-          <li>Skill Facture mémorisé : format reproduit automatiquement à chaque demande.</li>
-          <li>Prospection artisans automatisée : workflow complet de génération de leads.</li>
-          <li>Gestion d'avis automatique : réponses automatisées aux avis Google My Business.</li>
-          <li>Contrôle d'ordinateur à distance : commander applications et fichiers depuis mobile.</li>
-          <li>SMMIA : agence de marketing entièrement automatisée.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <span class="badge">Workflow alternatif (extrait)</span>
-        <p>Exemple : "Créer une automatisation : quand je reçois un mail après 16h, envoyer des messages à tout le monde et enregistrer les messages dans un Google Sheet".</p>
-      </div>
-    </section>
-
-    <!-- POINTS CLES -->
-    <section id="conclusion" class="section">
-      <h2 class="section-title">Points clés à retenir</h2>
-
-      <div class="card">
-        <span class="badge">Résumé</span>
-        <ul>
-          <li>Nouvelle mentalité business : avant de lancer, se demander "Est‑ce que je peux l'automatiser ?"</li>
-          <li>Avantage temporel : tester un business en 1 heure au lieu d'y consacrer 100% du temps.</li>
-          <li>Risque d'hallucination : sans MCP, l'IA peut inventer des propriétés inexistantes et créer des workflows non‑fonctionnels.</li>
-          <li>Performance Terminal : connexion directe au processeur = IA plus puissante qu'en navigateur.</li>
-          <li>MCP = Expert instantané : accès à documentation et expertise sans apprentissage.</li>
-          <li>Rentabilité : "Si vous pouvez l'automatiser, c'est que l'idée business est rentable."</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <span class="badge">Ressources & Support</span>
-        <p>Replays complets, bot Whisper (transcription), documentation d'installation, workflows exportables (JSON). Support communautaire via Discord (canaux SMMA, e‑commerce, fiscalité).</p>
-        <p class="muted">Astuce : écrire "je suis nouveau" dans le canal général pour obtenir de l'aide.</p>
-      </div>
-
-      <div class="card">
-        <span class="badge">Vocabulaire Technique</span>
-        <ul>
-          <li><strong>Workflow</strong> : enchaînement d'actions automatisées de A à Z.</li>
-          <li><strong>Trigger</strong> : événement déclencheur.</li>
-          <li><strong>Node</strong> : bloc d'action individuel dans un workflow.</li>
-          <li><strong>Hallucination</strong> : réponse erronée inventée par l'IA par manque d'information.</li>
-          <li><strong>Scraping</strong> : extraction automatique de données.</li>
-          <li><strong>API</strong> : interface entre logiciels.</li>
-          <li><strong>VPS</strong> : serveur privé virtuel.</li>
-          <li><strong>CLI</strong> : interface en ligne de commande.</li>
-          <li><strong>MCP</strong> : Model Context Protocol (connecteur d'expertise).</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <span class="badge">Conclusion & Prochaines étapes</span>
-        <p>Objectif atteint : transformation de la façon de travailler grâce à l'automatisation intelligente. Message du formateur : "À partir d'aujourd'hui, s'il y a des gens qui ne font pas d'oseille, c'est pas normal. Là il y a un workflow complet pour automatiser en volume."</p>
-        <ol>
-          <li>Appliquer les workflows présentés.</li>
-          <li>Tester les automatisations avec les outils configurés.</li>
-          <li>Développer ses propres business plans automatisés.</li>
-        </ol>
-      </div>
-    </section>
-
-    <div style="height:18px"></div>
-    <div class="muted" style="font-size:13px">Fichiers complémentaires : replays et docs disponibles dans l'espace formation. Si tu veux, je peux exporter cette page en PDF propre ou en HTML/CSS avec assets pour hébergement.</div>
-
-  </main>
-</div>
-
-<!-- Optional JS: TOC active highlight & smooth scroll -->
 <script>
-  // Smooth scrolling
-  document.querySelectorAll('.toc a').forEach(a=>{
-    a.addEventListener('click', (e)=>{
+  // Smooth scroll for anchor clicks (and set active class)
+  const nav = document.getElementById('topnav');
+  const links = Array.from(nav.querySelectorAll('a'));
+  links.forEach(a=>{
+    a.addEventListener('click', e=>{
       e.preventDefault();
-      document.querySelectorAll('.toc a').forEach(x=>x.classList.remove('active'));
-      a.classList.add('active');
       const id = a.getAttribute('href');
       document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
+      links.forEach(x=>x.classList.remove('active'));
+      a.classList.add('active');
+      // close mobile menu if open
+      if(document.getElementById('topnav').classList.contains('open')){
+        document.getElementById('topnav').classList.remove('open');
+      }
     });
   });
 
-  // Auto highlight based on scroll
+  // Highlight on scroll
   const sections = Array.from(document.querySelectorAll('main .section'));
-  window.addEventListener('scroll', ()=>{
-    let idx = sections.findIndex(s => s.getBoundingClientRect().top > 120);
-    if(idx === -1) idx = sections.length - 1;
-    const active = sections[Math.max(0,idx-1)];
-    if(!active) return;
-    const id = '#' + active.id;
-    document.querySelectorAll('.toc a').forEach(a=>{
-      if(a.getAttribute('href') === id) a.classList.add('active'); else a.classList.remove('active');
-    });
+  function onScroll(){
+    const offset = 90; // header height buffer
+    let current = sections[0];
+    for(const s of sections){
+      if(s.getBoundingClientRect().top - offset <= 0){
+        current = s;
+      } else break;
+    }
+    const id = '#' + current.id;
+    links.forEach(a => (a.getAttribute('href') === id) ? a.classList.add('active') : a.classList.remove('active'));
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Mobile hamburger toggle
+  const hambtn = document.getElementById('hambtn');
+  hambtn.addEventListener('click', ()=>{
+    nav.classList.toggle('open');
   });
+
 </script>
 
 </body>
 </html>
+
