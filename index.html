@@ -1,459 +1,500 @@
-from pathlib import Path
-html_path = Path("index.html")
-
-content = """<!doctype html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Automatisation Business avec l'IA — Notes de Cours (Structuré)</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Notes : Automatisation Business avec l'IA — Structuration</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#7c3aed; --glass: rgba(255,255,255,0.03);
-  --maxw:1100px; --gap:18px;
-  --radius:12px; font-family: Inter, Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
-  color-scheme: dark;
-}
-*{box-sizing:border-box}
-body{
-  margin:0; background:linear-gradient(180deg,#071029 0%, #071422 100%); color:#e6eef6;
-  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-}
-.container{max-width:var(--maxw); margin:28px auto; padding:20px; display:grid; grid-template-columns: 260px 1fr; gap:var(--gap);}
-.sidebar{position:sticky; top:20px; align-self:start; background:var(--card); padding:18px; border-radius:var(--radius); box-shadow:0 6px 30px rgba(2,6,23,0.6); height:calc(100vh - 60px); overflow:auto;}
-.brand{font-weight:700; color:var(--accent); font-size:16px; margin-bottom:10px;}
-.toc{font-size:14px; color:var(--muted);}
-.toc a{color:inherit; text-decoration:none; display:block; padding:8px 6px; border-radius:8px;}
-.toc a:hover{background:var(--glass);}
-.header{grid-column:span 2; margin-bottom:6px; display:flex; align-items:center; gap:12px;}
-.h1{font-size:20px; font-weight:700;}
-.meta{color:var(--muted); font-size:13px;}
-.main{background:transparent; padding-left:6px;}
-.section{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:12px; padding:18px; margin-bottom:14px; box-shadow: 0 6px 30px rgba(2,6,23,0.4);}
-.section h2{margin:0 0 8px 0; font-size:16px; color:#def;}
-.sub{color:var(--muted); font-size:13px; margin-bottom:12px;}
-.row{display:flex; gap:12px; flex-wrap:wrap;}
-.card{background:rgba(255,255,255,0.02); padding:12px; border-radius:10px; flex:1 1 320px; min-width:240px; border:1px solid rgba(255,255,255,0.02);}
-.card h3{margin:0 0 8px 0; font-size:14px; color:#fff;}
-.kv{font-family:monospace; font-size:13px; color:var(--muted); background:rgba(0,0,0,0.12); padding:8px; border-radius:8px; overflow:auto;}
-.note{background:#2b3750; padding:10px; border-radius:10px; color:#fff; font-size:14px;}
-.block-flag{display:inline-block; padding:6px 10px; border-radius:999px; background:linear-gradient(90deg,var(--accent),#3b82f6); color:white; font-weight:600; font-size:12px;}
-.controls{display:flex; gap:8px; margin-left:auto;}
-.small{font-size:13px; color:var(--muted)}
-.footer{grid-column:span 2; color:var(--muted); font-size:13px; margin-top:6px; text-align:center}
-@media (max-width:900px){
-  .container{grid-template-columns:1fr; padding:12px}
-  .sidebar{position:relative; height:auto; order:2}
-  .header{flex-direction:column; align-items:flex-start}
-}
+  :root{
+    --bg:#070615;
+    --panel:#0e0b1a;
+    --card:#0f1724;
+    --muted:#9aa4bf;
+    --accent:#7C5CFF;
+    --accent-2:#6AE3FF;
+    --glow: 0 6px 30px rgba(124,92,255,0.12);
+    --border: rgba(255,255,255,0.04);
+    --card-border: linear-gradient(90deg, rgba(124,92,255,0.18), rgba(106,227,255,0.06));
+    --radius:12px;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color-scheme: dark;
+  }
+  html,body{height:100%;margin:0;background:linear-gradient(180deg,#05030a 0%, #081025 100%);}
+  .app {
+    display:flex;
+    min-height:100vh;
+    gap:28px;
+    padding:28px;
+    box-sizing:border-box;
+  }
+
+  /* Sidebar (TOC) */
+  .sidebar {
+    width:320px;
+    position:sticky;
+    top:28px;
+    height:calc(100vh - 56px);
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:16px;
+    padding:20px;
+    box-shadow:var(--glow);
+    border:1px solid var(--border);
+    overflow:auto;
+    flex-shrink:0;
+  }
+  .brand{
+    display:flex;align-items:center;gap:12px;margin-bottom:14px;
+  }
+  .logo {
+    width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    box-shadow:0 6px 20px rgba(124,92,255,0.18);
+    display:flex;align-items:center;justify-content:center;font-weight:700;color:white;
+    font-family: "JetBrains Mono";
+  }
+  .brand h1{margin:0;font-size:14px;color:#fff;font-weight:700;}
+  .brand p{margin:0;font-size:12px;color:var(--muted);}
+
+  .toc {margin-top:12px;}
+  .toc h3{font-size:12px;color:var(--muted);margin:12px 0 8px;}
+  .toc a{
+    display:block;padding:10px;border-radius:8px;margin-bottom:8px;color:#dfe7ff;text-decoration:none;
+    background:linear-gradient(180deg, rgba(255,255,255,0.012), transparent);
+    border:1px solid rgba(255,255,255,0.02);font-size:13px;
+  }
+  .toc a small{display:block;font-size:11px;color:var(--muted);margin-top:4px;}
+
+  /* Main content */
+  .main {
+    flex:1;
+    max-width:980px;
+    min-width:0;
+  }
+  .header {
+    display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;
+  }
+  .header .title {
+    color:#ffffff;font-size:18px;font-weight:800;
+  }
+  .header .meta{color:var(--muted);font-size:13px;}
+
+  /* Card style */
+  .section {
+    margin-bottom:18px;
+  }
+  .card {
+    background:linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.008));
+    border-radius:var(--radius);
+    padding:18px;
+    border:1px solid var(--border);
+    box-shadow: var(--glow);
+    margin-bottom:12px;
+  }
+  .card .badge {
+    display:inline-block;padding:6px 10px;border-radius:999px;font-weight:700;
+    background:linear-gradient(90deg, rgba(124,92,255,0.16), rgba(106,227,255,0.06));
+    color:#fff;font-size:12px;margin-bottom:10px;
+    border:1px solid rgba(255,255,255,0.03);
+  }
+  h2.section-title{margin:0 0 10px 0;color:#e9efff;font-size:16px;}
+  h3.card-title{margin:0 0 8px 0;color:#fff;font-size:14px;}
+  p, li {color: #cfd9ff;font-size:13px;line-height:1.45;margin:8px 0;}
+  .muted{color:var(--muted);font-size:13px;}
+  ul{padding-left:18px;margin:8px 0;}
+  pre{background:rgba(0,0,0,0.25);padding:14px;border-radius:8px;font-family:"JetBrains Mono",monospace;color:#e9f2ff;overflow:auto;border:1px solid rgba(255,255,255,0.02)}
+  code{background:rgba(255,255,255,0.02);padding:4px 6px;border-radius:6px;font-family:"JetBrains Mono", monospace;color:#dfefff;font-size:12px;}
+
+  /* small helper components */
+  .row {display:flex;gap:12px;flex-wrap:wrap;}
+  .chip {padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02);color:var(--muted);font-size:13px;}
+  .grid {display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px;}
+  .node {
+    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.008));
+    border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,0.02);font-size:13px;color:#e7f0ff;
+  }
+
+  /* Footer small */
+  .footer-note {color:var(--muted);font-size:13px;margin-top:18px;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);background:linear-gradient(180deg, rgba(255,255,255,0.006), transparent);}
+
+  /* Responsive */
+  @media (max-width:980px){
+    .app{flex-direction:column;padding:18px;}
+    .sidebar{width:100%;position:relative;height:auto;top:unset;}
+    .main{max-width:100%}
+    .grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:640px){
+    .grid{grid-template-columns:repeat(1,1fr);}
+    .sidebar{padding:12px;}
+  }
+
+  /* link highlight */
+  .toc a.active{outline:2px solid rgba(124,92,255,0.14);box-shadow:0 8px 30px rgba(124,92,255,0.06);}
 </style>
 </head>
-<script src="script.js" defer></script>
 <body>
-<div class="container">
-  <div class="header" style="grid-column:span 2;">
-    <div>
-      <div class="brand">Automatisation Business avec l'IA — Notes de Cours</div>
-      <div class="h1">Structuration pédagogique fidèle — Design SaaS</div>
-      <div class="meta">Contenu reproduit fidèlement depuis le PDF fourni. Aucune information inventée.</div>
+<div class="app">
+  <aside class="sidebar" aria-label="Table des matières">
+    <div class="brand">
+      <div class="logo">AI</div>
+      <div>
+        <h1>Automatisation Business — IA</h1>
+        <p>Notes structurées • Live Formation</p>
+      </div>
     </div>
-    <div class="controls small">
-      <div class="block-flag">Verbatim intégré</div>
-    </div>
-  </div>
 
-  <aside class="sidebar">
     <div class="toc">
-      <strong>Sommaire</strong>
-      <a href="#introduction">Introduction</a>
-      <a href="#concepts-techniques">Concepts Techniques Fondamentaux</a>
-      <a href="#procedures-install">Procédures d'Installation et Configuration</a>
-      <a href="#business-plan">Business Plan : Prospection Automatisée</a>
-      <a href="#cas-dusage">Cas d'Usage Concrets</a>
-      <a href="#points-cles">Points Clés à Retenir</a>
-      <a href="#ressources-support">Ressources et Support</a>
-      <a href="#vocabulaire">Vocabulaire Technique</a>
-      <a href="#conclusion">Conclusion</a>
+      <h3>Table des matières</h3>
+      <a href="#intro">Introduction <small>Contexte, objectif, concept SMMIA</small></a>
+      <a href="#concepts">Concepts Techniques Fondamentaux <small>IA navigateur, terminal, Claude CLI...</small></a>
+      <a href="#tools">Outils & Écosystème <small>N8N, MCP, Outcraper, VPS...</small></a>
+      <a href="#procedures">Procédures d'installation <small>Claude CLI, MCP N8N, récupération API</small></a>
+      <a href="#business">Business Plan & Prospection <small>Workflow plombiers</small></a>
+      <a href="#cas">Cas d'usage & Résultats <small>Exemples concrets</small></a>
+      <a href="#conclusion">Conclusion & Prochaines étapes</a>
+    </div>
+
+    <div style="height:14px"></div>
+    <div class="footer-note">
+      ⚠ Toutes les informations proviennent strictement du contenu du cours. Replays et docs disponibles dans l'espace formation.
     </div>
   </aside>
 
   <main class="main">
-    <section id="introduction" class="section">
-      <h2>Introduction</h2>
-      <div class="sub">Contexte, objectif et philosophie</div>
-      <div class="row">
-        <div class="card">
-          <h3>Contexte</h3>
-          <div class="kv">Live de formation sur l'automatisation business utilisant l'intelligence artificielle</div>
-        </div>
-        <div class="card">
-          <h3>Objectif principal</h3>
-          <div class="kv">Comprendre l'automatisation et générer des revenus ("faire de l'oseille")</div>
-        </div>
-        <div class="card">
-          <h3>Concept clé</h3>
-          <div class="kv">SMMIA (Social Media Marketing Intelligence Artificielle) = Combinaison entre la vente de services (SMMA) et l'intelligence artificielle pour automatiser la prestation de services</div>
-        </div>
+    <div class="header">
+      <div>
+        <div class="title">Automatisation Business avec l'IA — Notes de Cours</div>
+        <div class="meta">Structure fidèle au live — format "cards" pour chaque idée</div>
       </div>
+      <div class="muted">Design sombre • Cards • TOC</div>
+    </div>
 
-      <div style="height:12px"></div>
-      <div class="note"><strong>Philosophie du cours :</strong> "L'objectif c'est que vos agents bossent pour vous. Vous êtes à la chicha, vous savez que derrière ça fait rentrer de l'oseille"</div>
+    <!-- INTRO -->
+    <section id="intro" class="section">
+      <div class="card">
+        <span class="badge">Introduction</span>
+        <h2 class="section-title">Contexte & Objectifs</h2>
+        <h3 class="card-title">Contexte</h3>
+        <p>Live de formation sur l'automatisation business utilisant l'intelligence artificielle.</p>
+
+        <h3 class="card-title">Objectif principal</h3>
+        <p>Comprendre l'automatisation et générer des revenus ("faire de l'oseille").</p>
+
+        <h3 class="card-title">Concept clé</h3>
+        <p><strong>SMMIA</strong> (Social Media Marketing Intelligence Artificielle) = combinaison entre la vente de services (SMMA) et l'intelligence artificielle pour automatiser la prestation de services.</p>
+
+        <h3 class="card-title">Philosophie du cours</h3>
+        <p>"L'objectif c'est que vos agents bossent pour vous. Vous êtes à la chicha, vous savez que derrière ça fait rentrer de l'oseille"</p>
+      </div>
     </section>
 
-    <section id="concepts-techniques" class="section">
-      <h2>Concepts Techniques Fondamentaux</h2>
-      <div class="sub">Chaque note suivante est reproduite fidèlement et structurée en blocs.</div>
+    <!-- CONCEPTS -->
+    <section id="concepts" class="section">
+      <h2 class="section-title">Concepts Techniques Fondamentaux</h2>
 
-      <div class="card" style="margin-bottom:12px;">
-        <h3>1. IA sur Navigateur vs Terminal</h3>
-        <div class="kv">
-Critèr e IA sur Navigateur IA sur Terminal
-Performance Bridée, partage ressourcesBoostée, connexion directe processeur
-LimitationsContexte fenêtre limité, autres onglets ouvertsAucune limitation
-Analogie Moteur thermique (lent) Moteur électrique (instantané)
-Connexion Navigateur → IA Terminal → Processeur → IA
-Principe  : "Là quand vous passez sur le terminal, l'IA  ça fait processeur IA. C'est comme quand on parle voiture [...] c'est terminal processeur ."
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="card">
-          <h3>2. Claude CLI (Command Line Interface)</h3>
-          <div class="kv">
-Définition  : Version de l'IA  Claude exécutée directement dans le terminal
-Avantage  : Plus puissant que l'utilisation via navigateur
-Utilisation  : Permet de créer des sections Shopify , des automatisations, etc.
-Installation Windows  :
-1. Installer Node.js
-2. Installer Git
-3. Installer Claude CLI
-4. Documentation disponible dans l'espace replay
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>3. Open CL</h3>
-          <div class="kv">
-Caractéristiques  :
-Assistant IA  accessible depuis mobile (WhatsApp, Discord, Telegram)
-Accès en temps réel à tout l'ordinateur
-Accès aux skills et agents configurés
-Exemple d'usage concr et :
-"Je suis en closing, dans un rendez-vous avec un client : 'S'il te plaît Tasha, fais-moi une facture de 1200 € pour un site vitrine plus un système de réservation.' Il le fait, j'ai
-
-[...]
-
-directement tout sur mon téléphone."
-Prér equis  : L'ordinateur doit rester allumé (solution : VPS)
-          </div>
-        </div>
-      </div>
-
-      <div class="row" style="margin-top:12px;">
-        <div class="card">
-          <h3>4. VPS (Virtual Private Server)</h3>
-          <div class="kv">
-Définition  : Ordinateur virtuel loué à distance
-Coût  : 10-15€ par mois
-Avantage  : Reste allumé 24h/24, permet de faire tourner les automatisations
-Alternative  : À l'ordinateur physique qui doit rester allumé
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>5. Skills (Compétences IA)</h3>
-          <div class="kv">
-Définition  : Instructions spécialisées mémorisées par l'IA  pour ef fectuer des tâches précises
-Types de skills mentionnés  :
-Mobile First  : Sites web responsive mobile
-Front-end Design  : Création de beaux designs automatiquement
-UI/UX  : Navigation intuitive optimisée
-Factur e : Génération automatique de factures
-Méthode de création  :
-1. Réaliser une tâche complète avec l'IA  (ex: créer une facture de A à Z)
-2. Donner l'instruction : "Maintenant je veux que à chaque fois que je te demande une facture, tu me refais exactement la même facture en modifiant par rapport à ce que je veux"
-3. L'IA crée automatiquement le skill
-          </div>
-        </div>
-      </div>
-
-      <div style="height:12px"></div>
       <div class="card">
-        <h3>6. N8N - Outil d'automatisation</h3>
-        <div class="kv">
-Définition  : Tableau blanc où on connecte des blocs entre eux pour créer des workflows automatisés
-Chiffr es clés  :
-70 000 étoiles GitHub
-Plus de 200 000 utilisateurs actifs
-1286 nodes (blocs) disponibles
-Architectur e :
-Trigger  (Déclencheur)  : Événement qui lance le workflow (ex: "tous les jours à 8h", "quand je reçois un mail", "nouvelle commande Shopify")
-Node (Nœud)  : Bloc d'action individuel (envoyer mail, scraper site, poster réseaux sociaux, appeler API)
-Workflow  : Enchaînement automatisé de A à Z
-Comparaison avec concurr ents :
-Outil Avantages Type
-N8N Gagne "haut la main", plus flexible Open source
-Make Solution payante SaaS
-Zapier Similaire à Make SaaS
+        <span class="badge">1. IA sur Navigateur vs Terminal</span>
+        <h3 class="card-title">Comparaison</h3>
+        <p class="muted">Tableau résumé :</p>
+        <ul>
+          <li><strong>Navigateur</strong> : performance bridée, ressources partagées, contexte fenêtre limité (onglets ouverts).</li>
+          <li><strong>Terminal</strong> : performance boostée, connexion directe au processeur, aucune limitation de contexte.</li>
+        </ul>
+        <p>Analogie : moteur thermique (lent) vs moteur électrique (instantané). Principe : "Quand vous passez sur le terminal, l'IA c'est processeur IA."</p>
+      </div>
+
+      <div class="card">
+        <span class="badge">2. Claude CLI</span>
+        <h3 class="card-title">Définition & Avantage</h3>
+        <p>Version de l'IA Claude exécutée directement dans le terminal. Plus puissant que l'utilisation via navigateur et permet de créer sections Shopify, automatisations, etc.</p>
+
+        <h3 class="card-title">Installation Windows (résumé)</h3>
+        <ul>
+          <li>Installer Node.js</li>
+          <li>Installer Git</li>
+          <li>Installer Claude CLI</li>
+          <li>Documentation disponible dans l'espace replay</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="badge">3. Open CL</span>
+        <h3 class="card-title">Caractéristiques</h3>
+        <p>Assistant IA accessible depuis mobile (WhatsApp, Discord, Telegram) avec accès en temps réel à tout l'ordinateur et aux skills/agents configurés.</p>
+        <p><strong>Exemple concret</strong> : "Je suis en closing... 'S'il te plaît Tasha, fais-moi une facture de 1200 € pour un site vitrine plus un système de réservation.' Il le fait, j'ai directement tout sur mon téléphone."</p>
+        <p><strong>Pré-requis</strong> : l'ordinateur doit rester allumé (solution recommandée : VPS).</p>
+      </div>
+
+      <div class="card">
+        <span class="badge">4. VPS (Virtual Private Server)</span>
+        <h3 class="card-title">Définition & Coût</h3>
+        <p>Ordinateur virtuel loué à distance. Coût typique : 10–15€ par mois. Avantage : reste allumé 24h/24, permet de faire tourner les automatisations. Alternative : ordinateur physique qui reste allumé.</p>
+      </div>
+
+      <div class="card">
+        <span class="badge">5. Skills (Compétences IA)</span>
+        <h3 class="card-title">Définition & Méthode</h3>
+        <p>Instructions spécialisées mémorisées par l'IA pour effectuer des tâches précises.</p>
+        <p>Types mentionnés : Mobile First (sites responsive), Front-end Design, UI/UX, Facture (génération automatique).</p>
+        <h4 class="muted">Méthode de création</h4>
+        <ol>
+          <li>Réaliser la tâche complète avec l'IA (ex : créer une facture de A à Z).</li>
+          <li>Donner l'instruction : "Maintenant je veux que à chaque fois que je te demande une facture, tu me refais exactement la même facture en modifiant selon mes variables".</li>
+          <li>L'IA crée automatiquement le skill.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <span class="badge">6. N8N - Outil d'automatisation</span>
+        <h3 class="card-title">Présentation</h3>
+        <p>N8N = tableau blanc où on connecte des blocs entre eux pour créer des workflows automatisés.</p>
+        <p class="muted">Chiffres clés :</p>
+        <ul>
+          <li>70 000 étoiles GitHub</li>
+          <li>Plus de 200 000 utilisateurs actifs</li>
+          <li>1286 nodes disponibles</li>
+        </ul>
+
+        <h4 class="muted">Architecture / concepts</h4>
+        <ul>
+          <li><strong>Trigger</strong> : événement qui lance le workflow (ex: horaire, mail reçu, nouvelle commande Shopify).</li>
+          <li><strong>Node</strong> : bloc d'action (envoyer mail, scraper, poster sur réseaux, appeler API).</li>
+          <li><strong>Workflow</strong> : enchaînement d'actions automatisées.</li>
+        </ul>
+
+        <h4 class="muted">Comparaison concurrents</h4>
+        <div class="grid" style="margin-top:10px;">
+          <div class="node"><strong>N8N</strong><div class="muted">Open source • Plus flexible</div></div>
+          <div class="node"><strong>Make</strong><div class="muted">SaaS • Payant</div></div>
+          <div class="node"><strong>Zapier</strong><div class="muted">SaaS • Similaire à Make</div></div>
         </div>
       </div>
 
-      <div style="height:12px"></div>
       <div class="card">
-        <h3>7. MCP (Model Context Protocol)</h3>
-        <div class="kv">
-Définition simple  : "Une prise, un connecteur"
-Fonction  : Transforme Claude en expert instantané d'un outil spécifique
+        <span class="badge">7. MCP (Model Context Protocol)</span>
+        <h3 class="card-title">Fonction & Exemple</h3>
+        <p>Définition simple : "Une prise, un connecteur". Transforme Claude en expert instantané d'un outil spécifique (ex : MCP N8N fait connaître les 1286 nodes à l'IA).</p>
 
-[...]
+        <h4 class="muted">Avant / Après MCP (résumé)</h4>
+        <ul>
+          <li>Apprentissage : avant → lire la doc ; avec MCP → aucun apprentissage nécessaire.</li>
+          <li>Erreurs (hallucinations) : avant → fréquentes ; avec MCP → quasi zéro.</li>
+          <li>Temps de création : avant → ~45 minutes ; avec MCP → ~3 minutes.</li>
+          <li>Couverture : avec MCP → 99% des propriétés.</li>
+        </ul>
 
-Exemple MCP  N8N  :
-Claude connaît les 1286 nodes par cœur
-Sait exactement quel branchement faire à quel moment
-Devient un expert de l'automatisation
-Comparaison Avant/Après MCP
-Critèr e Avant MCP Avec MCP
-Appr entissage Toute la documentation N8N à mémoriser Aucun
-Erreurs Fréquentes, hallucinations Zéro hallucination
-Temps création 45 minutes pour workflow basique 3 minutes pour workflow complet
-Couvertur e Partielle 99% des propriétés
-Méthode Regarder 4 vidéos YouTube par action Description en français
-Autr es MCP  disponibles  :
-MCP  Notion : Envoi automatique de projets vers Notion
-MCP  disponibles pour de nombreux outils
-        </div>
-      </div>
-
-      <div style="height:12px"></div>
-      <div class="card">
-        <h3>8. Écosystème d'outils complémentaires</h3>
-        <div class="kv">
-Outcraper  : Extraction de données depuis les fiches Google My Business
-GitHub  : Héber gement et versioning du code
-Vercel : Déploiement automatique de sites web
-Shopify API : Accès via Shopify Partner pour contrôle total
-Whisper  : Transcription automatique audio vers texte
-Gmail  : Intégration pour envoi d'emails automatisés
-        </div>
+        <p class="muted">Autres MCP disponibles : MCP Notion (envoi automatique de projets vers Notion), et d'autres pour de nombreux outils.</p>
       </div>
 
     </section>
 
-    <section id="procedures-install" class="section">
-      <h2>Procédures d'Installation et Configuration</h2>
+    <!-- ECOSYSTEME OUTILS -->
+    <section id="tools" class="section">
+      <h2 class="section-title">Écosystème d'outils complémentaires</h2>
 
-      <div class="card" style="margin-bottom:12px">
-        <h3>Installation Claude CLI (Windows)</h3>
-        <div class="kv">
-1. Installer  Node.js
-2. Installer  Git
-3. Installer  Claude CLI
-4. Consulter le replay disponible dans l'espace formation pour guide détaillé
+      <div class="card">
+        <span class="badge">Outils mentionnés</span>
+        <div class="row" style="margin-top:8px;">
+          <div class="chip">Outcraper — scraping fiches Google My Business</div>
+          <div class="chip">GitHub — hébergement & versioning</div>
+          <div class="chip">Vercel — déploiement automatique</div>
         </div>
-      </div>
-
-      <div class="card" style="margin-bottom:12px">
-        <h3>Installation MCP N8N</h3>
-        <div class="kv">
-1. Commande simple  : Dire à Claude "Installe-moi le MCP  N8N"
-2. Résultat  : Claude devient automatiquement expert N8N
-Recommandation  : "Installez le MCP  N8N complet, il va tout vous faire"
+        <div class="row" style="margin-top:8px;">
+          <div class="chip">Shopify API — via Shopify Partner</div>
+          <div class="chip">Whisper — transcription audio→texte</div>
+          <div class="chip">Gmail — intégration pour envoi d'emails</div>
         </div>
       </div>
 
       <div class="card">
-        <h3>Création de Skills Personnalisés</h3>
-        <div class="kv">
-1. Étape 1  : Réaliser la tâche complète avec l'IA
-2. Étape 2  : Instruction "À chaque fois que je demande [tâche], refais exactement pareil en modifiant uniquement les variables"
-3. Étape 3  : L'IA  mémorise automatiquement le skill
-        </div>
-      </div>
-
-      <div style="height:12px"></div>
-      <div class="card">
-        <h3>Récupération API Shopify</h3>
-        <div class="kv">
-1. Créer  un compte Shopify Partner
-2. Demander  l'API  de sa propre boutique via l'interface partenaire
-3. Obtenir  le contrôle total  (API admin)
-        </div>
-      </div>
-
-      <div style="height:12px"></div>
-      <div class="card">
-        <h3>Utilisation N8N avec Claude</h3>
-        <div class="kv">
-1. Décrir e l'automatisation souhaitée à Claude (vocal ou texte)
-2. Génération  : Claude crée le workflow JSON
-3. Import  : Importer le workflow dans N8N
-4. Lancement  : Cliquer sur "Start"
-        </div>
-      </div>
-
-    </section>
-
-    <section id="business-plan" class="section">
-      <h2>Business Plan : Prospection Automatisée</h2>
-
-      <div class="sub">Cas d'étude : Sites vitrines pour plombiers — Workflow complet en 7 étapes (texte reproduit)</div>
-
-      <div class="card">
-        <h3>Workflow complet (7 étapes)</h3>
-        <div class="kv">
-Étape 1 : Configuration du filtr e
-Critères de recherche : "Plombier Paris"
-Limite de résultats : 20 prospects
-
-Étape 2 : Scraping avec Outcraper
-Utilisation de l'API Outcraper
-Extraction des fiches Google My Business
-Filtr e spécifique  : Plombiers qui ont une fiche Google MAIS pas de site internet
-Données récupérées  : nom entreprise, adresse, email
-
-Étape 3 : Génération automatique du site
-Envoi des données à Claude ou Gemini via API
-Prompt  : "Génère un site vitrine HTML, complet et moderne pour un plombier"
-Personnalisation automatique avec les données extraites (nom, adresse, coordonnées)
-
-Étape 4 : Hébergement sur  GitHub
-Code HTML  automatiquement enregistré dans un repository GitHub
-
-Étape 5 : Déploiement sur  Vercel
-Push automatique du repository sur Vercel
-Génération d'une URL  de prévisualisation fonctionnelle
-
-Étape 6 : Rédaction de l'email de pr ospection
-Composition automatique d'un mail personnalisé
-Contenu type  : "Je me permets de vous contacter car j'ai remarqué que [nom entreprise] n'a pas encore de site Internet alors que vos concurrents à Paris en ont déjà un. J'ai pris l'initiative de créer une maquette de site vitrine. Ce site est entièrement personnalisé avec vos coordonnées pour 200€"
-
-Étape 7 : Envoi automatique
-Envoi via l'intégration Gmail dans N8N
-Email contenant le lien vers la maquette Vercel
-Utilisation de la boîte email personnelle pour éviter les spams
-        </div>
-      </div>
-
-    </section>
-
-    <section id="cas-dusage" class="section">
-      <h2>Cas d'Usage Concrets</h2>
-
-      <div class="card">
-        <h3>Résultats concrets obtenus</h3>
-        <div class="kv">
-✅ Cas 1  : Personne ayant lancé le système contactée par Pages Jaunes dès le lendemain pour référencement prioritaire
-✅ Cas 2  : Entrepreneur américain sur Twitter générant 2 000$ de revenus avec cette exacte méthode
-✅ Validation  : Le formateur a prédit cette technique avant sa viralisation aux États-Unis
-        </div>
-      </div>
-
-      <div style="height:12px"></div>
-      <div class="card">
-        <h3>Applications réussies</h3>
-        <div class="kv">
-1. Création de sections Shopify  : Utilisation de Claude pour coder des éléments e-commerce
-2. Designs avec Gemini  : Génération d'éléments visuels et graphiques
-3. Assistant de closing mobile  : Générer une facture de 1200€ pendant un rendez-vous client
-4. Skill Factur e mémorisé  : Format automatiquement reproduit à chaque demande
-5. Prospection artisans automatisée  : Workflow complet de génération de leads
-6. Gestion d'avis automatique  : Service de réponses automatisées aux avis Google My Business
-7. Contrôle d'ordinateur  à distance  : Commander applications et fichiers depuis mobile
-8. SMMIA  : Agence de marketing entièrement automatisée
-        </div>
-      </div>
-
-      <div style="height:12px"></div>
-      <div class="card">
-        <h3>Workflow alternatif mentionné</h3>
-        <div class="kv">
-Gestion d'emails conditionnelle  :
-"Je veux créer une automatisation pour que quand je reçois un mail à partir de 16 heures, tu envoies des messages à tout le monde et que les messages tu les enregistres dans un Google Sheet"
-        </div>
-      </div>
-
-    </section>
-
-    <section id="points-cles" class="section">
-      <h2>Points Clés à Retenir</h2>
-      <div class="card">
-        <div class="kv">
-💡 Nouvelle mentalité business  : Avant de lancer un business, se poser la question "Est-ce que je peux l'automatiser ?"
-⏰ Avantage tempor el : Possibilité de tester un business plan en 1 heure au lieu de s'y consacrer à 100%
-🚫 Risque d'hallucination  : Sans MCP , l'IA  peut inventer des propriétés inexistantes et créer des workflows non-fonctionnels
-🚀 Performance Terminal  : Connexion directe au processeur = IA  significativement plus puissante qu'en navigateur
-🔌 MCP  = Expert instantané  : Les MCP  donnent accès à toute la documentation et expertise d'un outil sans apprentissage
-💰 Rentabilité  : "Si vous pouvez l'automatiser , c'est qu'elle [l'idée business] est rentable"
-        </div>
+        <span class="badge">Utilisation N8N avec Claude</span>
+        <h3 class="card-title">Workflow résumé</h3>
+        <ol>
+          <li>Décrire l'automatisation souhaitée à Claude (vocal ou texte).</li>
+          <li>Claude génère le workflow JSON.</li>
+          <li>Importer le workflow dans N8N.</li>
+          <li>Lancer (Start).</li>
+        </ol>
       </div>
     </section>
 
-    <section id="ressources-support" class="section">
-      <h2>Ressources et Support Disponibles</h2>
+    <!-- PROCEDURES -->
+    <section id="procedures" class="section">
+      <h2 class="section-title">Procédures d'installation et configuration</h2>
 
       <div class="card">
-        <h3>Ressources pédagogiques</h3>
-        <div class="kv">
-Replays complets  : Tous les lives disponibles dans l'espace formation
-Bot Whisper  : Transcription automatique de chaque mot prononcé en live
-Documentation d'installation  : Guides détaillés pour tous les outils
-Workflows exportables  : Fichiers JSON prêts à importer dans N8N
-        </div>
+        <span class="badge">Installation Claude CLI (Windows)</span>
+        <ol>
+          <li>Installer Node.js</li>
+          <li>Installer Git</li>
+          <li>Installer Claude CLI</li>
+          <li>Consulter le replay pour le guide détaillé</li>
+        </ol>
       </div>
 
-      <div style="height:12px"></div>
       <div class="card">
-        <h3>Support communautaire</h3>
-        <div class="kv">
-Lien API Shopify  : Disponible dans le chat Discord
-Canaux Discord spécialisés  : SMMA, e-commerce, fiscalité (accessibles via "Af ficher tous les canaux")
-Aide communautair e : "Écrivez 'je suis nouveau' dans le canal général, tout le monde va vous aider"
-        </div>
+        <span class="badge">Installation MCP N8N</span>
+        <p>Commande simple : dire à Claude "Installe-moi le MCP N8N". Résultat : Claude devient automatiquement expert N8N.</p>
+        <p>Recommandation : "Installez le MCP N8N complet, il va tout vous faire".</p>
       </div>
 
-    </section>
-
-    <section id="vocabulaire" class="section">
-      <h2>Vocabulaire Technique</h2>
       <div class="card">
-        <div class="kv">
-Terme Définition
-Workflow Enchaînement d'actions automatisées de A à Z
-Trigger Événement déclencheur d'une automatisation
-Node Bloc d'action individuel dans un workflow
-Hallucination Réponse erronée inventée par l'IA  faute d'information
-Scraping Extraction automatique de données depuis des sites web
-API Interface permettant la communication entre logiciels
-VPS Serveur privé virtuel loué à distance
-CLI Interface en ligne de commande (terminal)
-MCP Model Context Protocol - connecteur d'expertise pour IA
-        </div>
+        <span class="badge">Création de skills personnalisés</span>
+        <ol>
+          <li>Réaliser la tâche complète avec l'IA.</li>
+          <li>Donner l'instruction pour la mémorisation du pattern (variables).</li>
+          <li>L'IA mémorise automatiquement le skill.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <span class="badge">Récupération API Shopify</span>
+        <ol>
+          <li>Créer un compte Shopify Partner.</li>
+          <li>Demander l'API de sa boutique via l'interface partenaire.</li>
+          <li>Obtenir le contrôle total (API admin).</li>
+        </ol>
       </div>
     </section>
 
+    <!-- BUSINESS PLAN -->
+    <section id="business" class="section">
+      <h2 class="section-title">Business Plan : Prospection Automatisée</h2>
+
+      <div class="card">
+        <span class="badge">Cas d'étude : Sites vitrines pour plombiers</span>
+        <h3 class="card-title">Principe</h3>
+        <p>Identifier des artisans sans site web, créer automatiquement un site personnalisé, et les démarcher avec la maquette prête.</p>
+
+        <h4 class="muted">Workflow complet (7 étapes)</h4>
+        <ol>
+          <li><strong>Configuration du filtre</strong> : critère recherche "Plombier Paris", limite 20 prospects.</li>
+          <li><strong>Scraping</strong> : Outcraper → extraire fiches Google My Business (filtre : fiche GMB existe MAIS pas de site internet). Données récupérées : nom, adresse, email.</li>
+          <li><strong>Génération du site</strong> : envoyer les données à Claude/Gemini via API. Prompt : "Génère un site vitrine HTML complet et moderne pour un plombier" — personnalisation automatique (nom, adresse, coordonnées).</li>
+          <li><strong>Hébergement sur GitHub</strong> : code HTML enregistré automatiquement dans un repository.</li>
+          <li><strong>Déploiement sur Vercel</strong> : push automatique → URL de prévisualisation fonctionnelle.</li>
+          <li><strong>Rédaction email de prospection</strong> : composition automatique d'un mail personnalisé (ex : proposition à 200€ avec lien maquette).</li>
+          <li><strong>Envoi automatique</strong> : via intégration Gmail dans N8N. Utiliser boîte email personnelle pour éviter les spams.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <span class="badge">Résultats concrets</span>
+        <ul>
+          <li>✅ Cas 1 : Personne contactée par Pages Jaunes dès le lendemain pour référencement prioritaire.</li>
+          <li>✅ Cas 2 : Entrepreneur américain générant 2 000$ avec cette méthode (Twitter).</li>
+          <li>✅ Validation : Le formateur a prédit la viralisation avant celle-ci aux États‑Unis.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CAS D'USAGE -->
+    <section id="cas" class="section">
+      <h2 class="section-title">Cas d'Usage Concrets</h2>
+
+      <div class="card">
+        <span class="badge">Applications réussies</span>
+        <ul>
+          <li>Création de sections Shopify : utilisation de Claude pour coder des éléments e‑commerce.</li>
+          <li>Designs avec Gemini : génération d'éléments visuels et graphiques.</li>
+          <li>Assistant de closing mobile : générer une facture de 1200€ pendant un rendez‑vous client.</li>
+          <li>Skill Facture mémorisé : format reproduit automatiquement à chaque demande.</li>
+          <li>Prospection artisans automatisée : workflow complet de génération de leads.</li>
+          <li>Gestion d'avis automatique : réponses automatisées aux avis Google My Business.</li>
+          <li>Contrôle d'ordinateur à distance : commander applications et fichiers depuis mobile.</li>
+          <li>SMMIA : agence de marketing entièrement automatisée.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="badge">Workflow alternatif (extrait)</span>
+        <p>Exemple : "Créer une automatisation : quand je reçois un mail après 16h, envoyer des messages à tout le monde et enregistrer les messages dans un Google Sheet".</p>
+      </div>
+    </section>
+
+    <!-- POINTS CLES -->
     <section id="conclusion" class="section">
-      <h2>Conclusion</h2>
+      <h2 class="section-title">Points clés à retenir</h2>
+
       <div class="card">
-        <div class="kv">
-Objectif atteint  : Transformation de la façon de travailler grâce à l'automatisation intelligente
-Message final du formateur  : "À partir d'aujourd'hui, s'il y a des gens qui ne font pas d'oseille, c'est pas normal. Là il y a un workflow complet pour automatiser en volume."
+        <span class="badge">Résumé</span>
+        <ul>
+          <li>Nouvelle mentalité business : avant de lancer, se demander "Est‑ce que je peux l'automatiser ?"</li>
+          <li>Avantage temporel : tester un business en 1 heure au lieu d'y consacrer 100% du temps.</li>
+          <li>Risque d'hallucination : sans MCP, l'IA peut inventer des propriétés inexistantes et créer des workflows non‑fonctionnels.</li>
+          <li>Performance Terminal : connexion directe au processeur = IA plus puissante qu'en navigateur.</li>
+          <li>MCP = Expert instantané : accès à documentation et expertise sans apprentissage.</li>
+          <li>Rentabilité : "Si vous pouvez l'automatiser, c'est que l'idée business est rentable."</li>
+        </ul>
+      </div>
 
-Prochaines étapes  :
-Appliquer les workflows présentés
-Tester les automatisations avec les outils configurés
-Développer ses propres business plans automatisés
+      <div class="card">
+        <span class="badge">Ressources & Support</span>
+        <p>Replays complets, bot Whisper (transcription), documentation d'installation, workflows exportables (JSON). Support communautaire via Discord (canaux SMMA, e‑commerce, fiscalité).</p>
+        <p class="muted">Astuce : écrire "je suis nouveau" dans le canal général pour obtenir de l'aide.</p>
+      </div>
 
-⚠ Note importante  : Toutes les informations sont basées strictement sur le contenu du cours. Les replays et documentations complémentaires sont disponibles dans l'espace formation pour approfondir la pratique.
-        </div>
+      <div class="card">
+        <span class="badge">Vocabulaire Technique</span>
+        <ul>
+          <li><strong>Workflow</strong> : enchaînement d'actions automatisées de A à Z.</li>
+          <li><strong>Trigger</strong> : événement déclencheur.</li>
+          <li><strong>Node</strong> : bloc d'action individuel dans un workflow.</li>
+          <li><strong>Hallucination</strong> : réponse erronée inventée par l'IA par manque d'information.</li>
+          <li><strong>Scraping</strong> : extraction automatique de données.</li>
+          <li><strong>API</strong> : interface entre logiciels.</li>
+          <li><strong>VPS</strong> : serveur privé virtuel.</li>
+          <li><strong>CLI</strong> : interface en ligne de commande.</li>
+          <li><strong>MCP</strong> : Model Context Protocol (connecteur d'expertise).</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="badge">Conclusion & Prochaines étapes</span>
+        <p>Objectif atteint : transformation de la façon de travailler grâce à l'automatisation intelligente. Message du formateur : "À partir d'aujourd'hui, s'il y a des gens qui ne font pas d'oseille, c'est pas normal. Là il y a un workflow complet pour automatiser en volume."</p>
+        <ol>
+          <li>Appliquer les workflows présentés.</li>
+          <li>Tester les automatisations avec les outils configurés.</li>
+          <li>Développer ses propres business plans automatisés.</li>
+        </ol>
       </div>
     </section>
 
-    <div class="footer">Fichier généré automatiquement — contenu reproduit fidèlement depuis le PDF fourni.</div>
+    <div style="height:18px"></div>
+    <div class="muted" style="font-size:13px">Fichiers complémentaires : replays et docs disponibles dans l'espace formation. Si tu veux, je peux exporter cette page en PDF propre ou en HTML/CSS avec assets pour hébergement.</div>
+
   </main>
 </div>
+
+<!-- Optional JS: TOC active highlight & smooth scroll -->
+<script>
+  // Smooth scrolling
+  document.querySelectorAll('.toc a').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      document.querySelectorAll('.toc a').forEach(x=>x.classList.remove('active'));
+      a.classList.add('active');
+      const id = a.getAttribute('href');
+      document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  // Auto highlight based on scroll
+  const sections = Array.from(document.querySelectorAll('main .section'));
+  window.addEventListener('scroll', ()=>{
+    let idx = sections.findIndex(s => s.getBoundingClientRect().top > 120);
+    if(idx === -1) idx = sections.length - 1;
+    const active = sections[Math.max(0,idx-1)];
+    if(!active) return;
+    const id = '#' + active.id;
+    document.querySelectorAll('.toc a').forEach(a=>{
+      if(a.getAttribute('href') === id) a.classList.add('active'); else a.classList.remove('active');
+    });
+  });
+</script>
+
 </body>
 </html>
-"""
-
-html_path.write_text(content, encoding="utf-8")
-print(f"WROTE {html_path.resolve()}")
