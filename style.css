@@ -1,0 +1,89 @@
+/* --- Carte sombre + tableau stylé (version GitHub Pages) --- */
+.part-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.03);
+  border-radius: 12px;
+  padding: 22px;
+  color: #E6EDF3;
+  box-shadow: 0 10px 30px rgba(2,2,8,0.55);
+  max-width: 1100px;
+  margin: 18px 0;
+}
+
+/* En-tête de section : badge + titre */
+.part-header {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:16px;
+}
+.part-badge {
+  width:48px;
+  height:48px;
+  border-radius:12px;
+  background: linear-gradient(135deg,#6C5BFF 0%, #4EC0FF 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  color:#fff;
+  font-size:18px;
+  box-shadow: 0 6px 18px rgba(76,60,150,0.25);
+}
+.part-title {
+  font-size:20px;
+  font-weight:700;
+  color:#FFFFFF;
+  line-height:1.05;
+}
+
+/* Sous-titre / description */
+.part-sub {
+  color: #AEB7CE;
+  font-size:13px;
+  margin-top:6px;
+}
+
+/* Tableau propre (garder structure de la 1ère capture) */
+.table-notes {
+  width:100%;
+  border-collapse:collapse;
+  margin-top:12px;
+  font-size:15px;
+  color:var(--muted, #9aa4bf);
+}
+.table-notes thead th {
+  background: linear-gradient(90deg,#121036 0%, #1b1a57 100%);
+  color:#ffffff;
+  text-align:left;
+  padding:12px 14px;
+  font-weight:700;
+  border-top-left-radius:8px;
+  border-top-right-radius:8px;
+}
+.table-notes tbody td {
+  padding:12px 14px;
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  background:transparent;
+}
+.table-notes tbody tr:nth-child(even) td{
+  background: rgba(255,255,255,0.02); /* alternance bleu clair subtile */
+}
+.table-notes tbody tr:last-child td{
+  border-bottom:none;
+}
+
+/* Responsive : transforme en cartes lisibles sur mobile */
+@media (max-width:760px){
+  .table-notes thead { display:none; }
+  .table-notes, .table-notes tbody, .table-notes tr, .table-notes td { display:block; width:100%; }
+  .table-notes tr { margin-bottom:12px; border-radius:10px; overflow:hidden; background:rgba(255,255,255,0.01); }
+  .table-notes td { padding:12px; position:relative; }
+  .table-notes td::before {
+    content: attr(data-label);
+    display:block;
+    font-weight:700;
+    color:#fff;
+    margin-bottom:6px;
+  }
+}
