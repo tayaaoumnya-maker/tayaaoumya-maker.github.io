@@ -1,4 +1,4 @@
-<!doctype html>
+html = """<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8" />
@@ -189,15 +189,54 @@
 
     <!-- Content -->
     <main>
+      <!-- === MODIFIED PART: section id="part1" prêt à remplacer === -->
       <section id="part1" class="section" aria-labelledby="part1-title">
         <h2 id="part1-title">PARTIE 1 — Intro & Process</h2>
-        <p class="muted">Résumé synthétique et étapes clés extraites du PDF. Remplace ce paragraphe par tes notes complètes.</p>
-        <ul>
-          <li>Étape 1 — Objectifs & Positionnement</li>
-          <li>Étape 2 — Offre & Prix</li>
-          <li>Étape 3 — Prospection & Pitch</li>
-        </ul>
+
+        <p class="muted">Résumé synthétique et étapes clés extraites du PDF. Colle / remplace ce bloc si nécessaire — voici une version enrichie prête à l'emploi.</p>
+
+        <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:12px">
+          <div style="flex:1;min-width:220px">
+            <h3 style="margin:0 0 8px;color:#fff;font-size:16px">Étape 1 — Objectifs & Positionnement</h3>
+            <ul style="color:var(--muted);margin:8px 0 0 18px;line-height:1.5">
+              <li>Définir la transformation promise au client (ex: +20% CA)</li>
+              <li>Segmenter l'offre par persona (TPE, commerce local, e‑commerce)</li>
+              <li>Fixer indicateurs clés (KPI) : CPA, ROAS, CAC, LTV)</li>
+            </ul>
+          </div>
+
+          <div style="flex:1;min-width:220px">
+            <h3 style="margin:0 0 8px;color:#fff;font-size:16px">Étape 2 — Offre & Prix</h3>
+            <ul style="color:var(--muted);margin:8px 0 0 18px;line-height:1.5">
+              <li>Pack "Starter" : Audit + 1 campagne — prix fixe</li>
+              <li>Pack "Scale" : Gestion mensuelle + reporting — abonnement</li>
+              <li>Offres additionnelles : création visuels, landing page, tracking</li>
+            </ul>
+          </div>
+
+          <div style="flex:1;min-width:220px">
+            <h3 style="margin:0 0 8px;color:#fff;font-size:16px">Étape 3 — Prospection & Pitch</h3>
+            <ul style="color:var(--muted);margin:8px 0 0 18px;line-height:1.5">
+              <li>Script terrain : ouverture, bénéfice clef, preuve sociale</li>
+              <li>Template e‑mail / LinkedIn : objet court + CTA clair</li>
+              <li>Process de qualification : enjeu, budget, décisionnaire, timing</li>
+            </ul>
+          </div>
+        </div>
+
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:16px 0">
+
+        <h4 style="margin:0 0 8px;color:#fff;font-size:15px">Checklist opérationnelle</h4>
+        <ol style="color:var(--muted);margin:8px 0 0 18px;line-height:1.6">
+          <li>Installer le pixel & conversions (vérifier events)</li>
+          <li>Créer 3 audiences de test (broad / interest / retargeting)</li>
+          <li>Lancer 3 créatives A/B et tracker les performances 7 jours</li>
+          <li>Plan de reporting : KPI hebdo + réunion de réajustement</li>
+        </ol>
+
+        <p class="muted" style="margin-top:12px">Tu veux que j'adapte ce bloc avec tes propres prix, scripts et exemples de messages ? Colle-les et je réintègre directement dans ce fichier prêt à pousser sur GitHub.</p>
       </section>
+      <!-- === END MODIFIED PART === -->
 
       <section id="part2" class="section" aria-labelledby="part2-title">
         <h2 id="part2-title">PARTIE 2 — Design</h2>
@@ -285,3 +324,9 @@
 
 </body>
 </html>
+"""
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html)
+
+print("index.html written to the current working directory.")
