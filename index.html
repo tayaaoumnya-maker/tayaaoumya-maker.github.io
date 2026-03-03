@@ -189,53 +189,81 @@ html = """<!doctype html>
 
     <!-- Content -->
     <main>
-      <!-- === MODIFIED PART: section id="part1" prêt à remplacer === -->
-      <section id="part1" class="section" aria-labelledby="part1-title">
-        <h2 id="part1-title">PARTIE 1 — Intro & Process</h2>
+<!-- Intro / Résumé -->
+<div class="part1-summary" style="background:var(--glass);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);">
+  <p style="margin:0;color:#EAF0FF;">
+    Objectif : aligner l’équipe sur les livrables, clarifier les rôles et définir les trois premières actions opérationnelles à exécuter dans les 7 jours.
+  </p>
+</div>
 
-        <p class="muted">Résumé synthétique et étapes clés extraites du PDF. Colle / remplace ce bloc si nécessaire — voici une version enrichie prête à l'emploi.</p>
+<!-- Checklist rapide -->
+<details style="background:linear-gradient(90deg, rgba(124,92,255,0.04), rgba(59,176,255,0.02));padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);">
+  <summary style="font-weight:700;cursor:pointer;color:var(--accent1);">Checklist rapide — À cocher</summary>
+  <ul style="margin:10px 0 0 18px;color:var(--muted);line-height:1.5;">
+    <li>Brief validé par le responsable produit</li>
+    <li>Accès aux comptes Meta (Ads / Business Manager) vérifiés</li>
+    <li>Pixel & événements configurés et testés</li>
+    <li>Audience seed + Persona documentés</li>
+    <li>Landing pages listées et URLs de test fournies</li>
+  </ul>
+</details>
 
-        <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:12px">
-          <div style="flex:1;min-width:220px">
-            <h3 style="margin:0 0 8px;color:#fff;font-size:16px">Étape 1 — Objectifs & Positionnement</h3>
-            <ul style="color:var(--muted);margin:8px 0 0 18px;line-height:1.5">
-              <li>Définir la transformation promise au client (ex: +20% CA)</li>
-              <li>Segmenter l'offre par persona (TPE, commerce local, e‑commerce)</li>
-              <li>Fixer indicateurs clés (KPI) : CPA, ROAS, CAC, LTV)</li>
-            </ul>
-          </div>
+<!-- Étapes détaillées -->
+<ol class="part1-steps" style="margin:0;padding-left:20px;color:#E6EDF3;display:flex;flex-direction:column;gap:12px;">
+  <li>
+    <strong>Étape 1 — Audit express (24–48h)</strong>
+    <p class="muted" style="margin:6px 0 0;color:var(--muted);">
+      Vérifier tracking, configurations Meta, conversions principales, et performance historique. Livrable : document <em>Audit‑Meta‑48h.pdf</em>.
+    </p>
+  </li>
 
-          <div style="flex:1;min-width:220px">
-            <h3 style="margin:0 0 8px;color:#fff;font-size:16px">Étape 2 — Offre & Prix</h3>
-            <ul style="color:var(--muted);margin:8px 0 0 18px;line-height:1.5">
-              <li>Pack "Starter" : Audit + 1 campagne — prix fixe</li>
-              <li>Pack "Scale" : Gestion mensuelle + reporting — abonnement</li>
-              <li>Offres additionnelles : création visuels, landing page, tracking</li>
-            </ul>
-          </div>
+  <li>
+    <strong>Étape 2 — Hypothèses & Plan de test (48–72h)</strong>
+    <p class="muted" style="margin:6px 0 0;color:var(--muted);">
+      Définir 3 hypothèses prioritaires (audience, créa, offre) et planifier le premier test A/B. Livrable : tableau des tests (Google Sheets).
+    </p>
+  </li>
 
-          <div style="flex:1;min-width:220px">
-            <h3 style="margin:0 0 8px;color:#fff;font-size:16px">Étape 3 — Prospection & Pitch</h3>
-            <ul style="color:var(--muted);margin:8px 0 0 18px;line-height:1.5">
-              <li>Script terrain : ouverture, bénéfice clef, preuve sociale</li>
-              <li>Template e‑mail / LinkedIn : objet court + CTA clair</li>
-              <li>Process de qualification : enjeu, budget, décisionnaire, timing</li>
-            </ul>
-          </div>
-        </div>
+  <li>
+    <strong>Étape 3 — Mise en ligne & monitoring (Jour 4–7)</strong>
+    <p class="muted" style="margin:6px 0 0;color:var(--muted);">
+      Lancer la phase d’apprentissage, vérifier la qualité des signaux (CAPI, events) et activer alertes Slack/email pour anomalies.
+    </p>
+  </li>
+</ol>
 
-        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:16px 0">
+<!-- Carte résumée actions 7 jours -->
+<div class="seven-days" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;">
+  <div style="background:linear-gradient(180deg,rgba(124,92,255,0.06),transparent);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);">
+    <h3 style="margin:0 0 6px 0;font-size:15px;color:var(--accent1)">À faire J+1</h3>
+    <ul style="margin:0;padding-left:18px;color:var(--muted);">
+      <li>Récupérer accès BM</li>
+      <li>Vérifier Pixel & CAPI</li>
+    </ul>
+  </div>
 
-        <h4 style="margin:0 0 8px;color:#fff;font-size:15px">Checklist opérationnelle</h4>
-        <ol style="color:var(--muted);margin:8px 0 0 18px;line-height:1.6">
-          <li>Installer le pixel & conversions (vérifier events)</li>
-          <li>Créer 3 audiences de test (broad / interest / retargeting)</li>
-          <li>Lancer 3 créatives A/B et tracker les performances 7 jours</li>
-          <li>Plan de reporting : KPI hebdo + réunion de réajustement</li>
-        </ol>
+  <div style="background:linear-gradient(180deg,rgba(59,176,255,0.04),transparent);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);">
+    <h3 style="margin:0 0 6px 0;font-size:15px;color:var(--accent2)">À faire J+3</h3>
+    <ul style="margin:0;padding-left:18px;color:var(--muted);">
+      <li>Uploader premières créas</li>
+      <li>Créer sets d’audiences</li>
+    </ul>
+  </div>
 
-        <p class="muted" style="margin-top:12px">Tu veux que j'adapte ce bloc avec tes propres prix, scripts et exemples de messages ? Colle-les et je réintègre directement dans ce fichier prêt à pousser sur GitHub.</p>
-      </section>
+  <div style="background:linear-gradient(180deg,rgba(124,92,255,0.03),rgba(59,176,255,0.02));padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);">
+    <h3 style="margin:0 0 6px 0;font-size:15px;color:var(--accent1)">À faire J+7</h3>
+    <ul style="margin:0;padding-left:18px;color:var(--muted);">
+      <li>Analyser signaux d’apprentissage</li>
+      <li>Prioriser optimisations</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Notes / Remarques -->
+<footer style="color:var(--muted);font-size:13px;">
+  <p style="margin:0;">Remarques : adapte les délais si le compte est en learning récent ou si le pixel n’envoie pas suffisamment d’événements.</p>
+</footer>
+
       <!-- === END MODIFIED PART === -->
 
       <section id="part2" class="section" aria-labelledby="part2-title">
